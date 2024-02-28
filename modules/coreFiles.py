@@ -27,3 +27,26 @@ def readDataFile(archivo):
 def addData(archivo,data):
     with open(BASE+archivo,"w+") as rwf:
         json.dump(data,rwf,indent=4)
+
+def listarTodosActivos(activos)
+for codigo, detalles in activos.items():
+    print(f"Codigo: {codigo}")
+    for clave, valor in detalles.items():
+        print(f"{clave.capitalize()}: {valor}")
+         print("-----------------------------")
+
+def listarActivosCategoria(activos, categoria):
+    for codigo, detalles in activos.items():
+        if detalles["categoria"] == categoria:
+            print(f"Código: {codigo}")
+            for clave, valor in detalles.items():
+                print(f"{clave.capitalize()}: {valor}")
+            print("-----------------------------")
+
+def listarActivosDaño(activos):
+    for codigo, detalles in activos.items():
+        if detalles["estado"] == "Dado de baja por daño":
+            print(f"Código: {codigo}")
+            for clave, valor in detalles.items():
+                print(f"{clave.capitalize()}: {valor}")
+            print("-----------------------------")

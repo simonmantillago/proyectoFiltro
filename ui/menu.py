@@ -149,11 +149,11 @@ def reports_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(listarTodosActivos)
     elif op == "2":
-        pass
+        wrapper(listarActivosCategori)
     elif op == "3":
-        pass
+        wrapper(listarActivosDaño)
     elif op == "4":
         pass
     elif op == "5":
