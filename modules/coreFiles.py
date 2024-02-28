@@ -3,13 +3,13 @@ import os
 import json
 BASE="data/"
 
-def borrar_pantalla():
-    if sys.platform == "linux" or sys.platform == "darwin":
-        os.system("clear")
-    else:
-        os.system("cls")
+def clear_screen():
+  if sys.platform == "linux" or sys.platform == "darwin":
+    os.system("clear")
+  else:
+    os.system("cls")
 
-def pausar_pantalla():
+def pause_screen():
     if sys.platform == "linux" or sys.platform == "darwin":
         x = input("Presione una tecla para continuar...")
     else:
