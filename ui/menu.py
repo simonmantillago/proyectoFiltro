@@ -1,12 +1,15 @@
 import modules.coreFiles as cf
 import modules.reusable as rs
+import modules.fileTranfer as ft
 from tabulate import tabulate
 import sys
-
-inventario = None
-inventario = cf.checkFile("inventario.json", inventario)
-
-def main_menu():
+data_inventario = {}
+def main_menu(inventario):
+    
+    global data_inventario 
+    data_inventario = inventario
+    ft.convertExel(data_inventario)
+    
     def wrapper(func):
         cf.clear_screen()
         func()

@@ -17,6 +17,7 @@ def checkInput(type, message):
                 showError("Error al Ingresa el Dato Intenta Ingresar Datos Reales")
             else:
                 return data
+            
 def showError(message):
     os.system("cls")
     print("\033[91m{}\033[00m" .format(message))
