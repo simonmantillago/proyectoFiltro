@@ -1,6 +1,7 @@
 import modules.coreFiles as cf
 import modules.reusable as rs
 import modules.fileTranfer as ft
+import modules.asignation as a
 from tabulate import tabulate
 import sys
 data_inventario = {}
@@ -156,7 +157,7 @@ def asignaciones_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(a.addAsignation,data_inventario)
     elif op == "2":
         pass
     elif op == "3":
