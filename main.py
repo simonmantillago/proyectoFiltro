@@ -4,7 +4,8 @@ from ui.menu import main_menu
 inventario ={
     'activos':{},
     'personas':{},
-    'zonas':{}
+    'zonas':{},
+    'asignaciones' :{}
 }
 
 

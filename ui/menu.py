@@ -8,7 +8,7 @@ def main_menu(inventario):
     
     global data_inventario 
     data_inventario = inventario
-    ft.convertExel(data_inventario)
+    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
     def wrapper(func):
         cf.clear_screen()
