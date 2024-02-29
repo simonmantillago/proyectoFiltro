@@ -63,10 +63,7 @@ def listActivosCategoria(data_inventario, tipo):
                4. Listar categoria Teclado
                
                """)
-    if op == "0":
-            clear_screen()  
-            reports_menu() 
-    elif op == "1":
+    if op == "1":
         listaMonitor = []
         for codigo, activo in data_inventario["activos"].items():
             if activo["tipo"] == "Monitor":
