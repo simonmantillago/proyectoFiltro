@@ -2,6 +2,10 @@ import modules.coreFiles as cf
 import modules.reusable as rs
 import modules.fileTranfer as ft
 import modules.asignation as a
+import modules.activosController as ac
+import modules.personalController as pc
+import modules.zonasController as zc
+
 from tabulate import tabulate
 import sys
 data_inventario = {}
@@ -64,13 +68,15 @@ def activos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(ac.addActivo,data_inventario)
     elif op == "2":
-        pass
+        cf.clear_screen()
+        mod = input('Ingrese el codigo del activo a modificar -> ')
+        wrapper(ac.modifyActivo,data_inventario.get('activos').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'activos',data_inventario)
     elif op == "4":
-        pass
+        wrapper(ac.searchActivo,data_inventario)
     elif op == "5":
         wrapper(main_menu)
     else:
@@ -95,13 +101,15 @@ def personal_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(pc.addPersonal,data_inventario)
     elif op == "2":
-        pass
+        cf.clear_screen()
+        mod = input('Ingrese la identificacion de la persona a modificar -> ')
+        wrapper(pc.modifyPersonal,data_inventario.get('personas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'personas',data_inventario)
     elif op == "4":
-        pass
+        wrapper(pc.searchPersonal,data_inventario)
     elif op == "5":
         wrapper(main_menu)
     else:
@@ -126,13 +134,14 @@ def zonas_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(zc.addZona,data_inventario)
     elif op == "2":
-        pass
+        mod = input('Ingrese el codigo de la zona a modificar -> ')
+        wrapper(zc.modifyZona,data_inventario.get('zonas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'zonas',data_inventario)
     elif op == "4":
-        pass
+        wrapper(zc.searchZona,data_inventario)
     elif op == "5":
         wrapper(main_menu)
     else:
