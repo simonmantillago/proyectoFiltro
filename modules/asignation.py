@@ -99,8 +99,7 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
 #######################################################################################################################################
 # SEARCH
     
-def search_Asignation():
-    inventario=cf.readDataFile('inventario.json')
+def search_Asignation(inventario):
     nro_asignation=cf.rs.checkInput('str','Ingrese el numero de la asignacion a buscar')
     if nro_asignation in inventario['asignaciones']:
         numero,fecha,tipo,AsignadoA,activos=inventario['asignaciones'][nro_asignation].values()

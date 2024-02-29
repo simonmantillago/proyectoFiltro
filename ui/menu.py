@@ -159,7 +159,7 @@ def asignaciones_menu():
     if op == "1":
         wrapper(a.addAsignation,data_inventario)
     elif op == "2":
-        wrapper(a.search_Asignation)
+        wrapper(a.search_Asignation,data_inventario)
     elif op == "3":
         wrapper(main_menu)
     else:
