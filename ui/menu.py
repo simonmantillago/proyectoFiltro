@@ -1,6 +1,7 @@
 import modules.coreFiles as cf
 import modules.reusable as rs
 import modules.fileTranfer as ft
+import modules.activosController as ac
 from tabulate import tabulate
 import sys
 data_inventario = {}
@@ -63,13 +64,15 @@ def activos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(ac.addActivo,data_inventario)
     elif op == "2":
-        pass
+        cf.clear_screen()
+        mod = input('Ingrese el codigo del activo a modificar -> ')
+        wrapper(ac.modifyActivo,data_inventario.get('activos').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'activos',data_inventario)
     elif op == "4":
-        pass
+        wrapper(ac.searchActivo,data_inventario)
     elif op == "5":
         wrapper(main_menu)
     else:
