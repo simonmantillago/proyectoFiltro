@@ -62,19 +62,22 @@ def addActivo(inventario):
         }
         inventario.get('activos').update({codigo:nuevo_activo})
         cf.addData('inventario.json',inventario)
-        rs.showSuccess('Activo')
+        rs.showSuccess('Activo registrado de manera correcta')
         addMore = rs.yesORnot('Desea ingresar otro activo dentro de la misma transaccion?')
         cf.clear_screen()
         
 def searchActivo(data):
-    valor = input("Ingrese el codigo del activo a buscar -> ").upper()
-    result= data['activos'].get(valor)
-    transaccion,formulario,codigo,serial,marca,categoria,tipo,nombre,proveedor,responsable,precio,estado,historial,asignado = result.values()
-    displayList = [['Codigo transaccion',transaccion],['Nro formulario',formulario],['Codigo',codigo],['Serial',serial],['Marca',marca],['Categoria',categoria],['Tipo',tipo],['Nombre',nombre],['Proveedor',proveedor],['Responsable',responsable],['Precio',precio],['Estado',estado],['Asigado A',asignado]]
-    print(tabulate(displayList,tablefmt="grid"))
-    cf.pause_screen()
-    cf.clear_screen()
-
+    if len(data['activos']):
+        valor = input("Ingrese el codigo del activo a buscar -> ").upper()
+        result= data['activos'].get(valor)
+        transaccion,formulario,codigo,serial,marca,categoria,tipo,nombre,proveedor,responsable,precio,estado,historial,asignado = result.values()
+        displayList = [['Codigo transaccion',transaccion],['Nro formulario',formulario],['Codigo',codigo],['Serial',serial],['Marca',marca],['Categoria',categoria],['Tipo',tipo],['Nombre',nombre],['Proveedor',proveedor],['Responsable',responsable],['Precio',precio],['Estado',estado],['Asigado A',asignado]]
+        print(tabulate(displayList,tablefmt="fancy_grid"))
+        cf.pause_screen()
+        cf.clear_screen()
+    else: 
+        rs.showError('No hay activos registrados')
+        cf.clear_screen()
 def modifyActivo(data, srcData):
     if len(data) <= 0:
         rs.showError('No se encontro informacion sobre ese activo')

@@ -5,7 +5,7 @@ from tabulate import tabulate
 def addPersonal(inventario):
     addMore = True
     while addMore:
-        id = rs.checkInput('str','Ingrese el id o nit de la persona')
+        id = rs.checkInput('str','Ingrese el id o nit de la persona o empresa')
         personalData = inventario.get('personas')
         if personalData:
             for value in personalData.values():
@@ -39,15 +39,20 @@ def addPersonal(inventario):
         cf.clear_screen()
 
 def searchPersonal(data):
-    valor = input("Ingrese el id de la persona a buscar -> ")
-    result= data['personas'].get(valor)
-    id,nombre,email,telefonos,activos = result.values()
-    movil,casa,personal,oficina = telefonos.values()
-    displayList = [['Id',id],['Nombre',nombre],['Email',email],['Celular',movil],['Fijo',casa],['Nro Personal',personal],['Nro ofincina',oficina],['Activos asignados',activos]]
-    print(tabulate(displayList,tablefmt="grid"))
-    cf.pause_screen()
-    cf.clear_screen()
-
+    if len(data['personas']):
+        valor = input("Ingrese el id de la persona a buscar -> ")
+        result= data['personas'].get(valor)
+        id,nombre,email,telefonos,activos = result.values()
+        movil,casa,personal,oficina = telefonos.values()
+        displayList = [['Id',id],['Nombre',nombre],['Email',email],['Celular',movil],['Fijo',casa],['Nro Personal',personal],['Nro ofincina',oficina],['Activos asignados',activos]]
+        print(tabulate(displayList,tablefmt="fancy_grid"))
+        cf.pause_screen()
+        cf.clear_screen()
+    else: 
+        rs.showError('No hay personal registrado')
+        cf.clear_screen()
+        
+        
 def modifyPersonal(data, srcData):
     if len(data) <= 0:
         rs.showError('No se encontro informacion sobre ese activo')

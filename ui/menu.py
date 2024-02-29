@@ -3,6 +3,7 @@ import modules.reusable as rs
 import modules.fileTranfer as ft
 import modules.activosController as ac
 import modules.personalController as pc
+import modules.zonasController as zc
 from tabulate import tabulate
 import sys
 data_inventario = {}
@@ -101,7 +102,7 @@ def personal_menu():
         wrapper(pc.addPersonal,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese el codigo del activo a modificar -> ')
+        mod = input('Ingrese la identificacion de la persona a modificar -> ')
         wrapper(pc.modifyPersonal,data_inventario.get('personas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'personas',data_inventario)
@@ -131,13 +132,14 @@ def zonas_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(zc.addZona,data_inventario)
     elif op == "2":
-        pass
+        mod = input('Ingrese el codigo de la zona a modificar -> ')
+        wrapper(zc.modifyZona,data_inventario.get('zonas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'zonas',data_inventario)
     elif op == "4":
-        pass
+        wrapper(zc.searchZona,data_inventario)
     elif op == "5":
         wrapper(main_menu)
     else:
