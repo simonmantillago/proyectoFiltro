@@ -51,7 +51,7 @@ def addAsignation(inventario):
                 cf.rs.showError('El id no corresponde a ningun activo registrado')
         isActivo=cf.rs.yesORnot('Desea agregar otro activo a la asignación')
         if activos==[]: ## si se quieren salir de la asignación 
-            isActivo=cf.rs.yesORnot('Desea continuar con la asignación')
+            isActivo=cf.rs.yesORnot('Desea salir de asignaciones')
             cf.clear_screen()
             break
         else:
