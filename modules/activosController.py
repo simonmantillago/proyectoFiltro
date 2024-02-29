@@ -62,6 +62,7 @@ def addActivo(inventario):
         }
         inventario.get('activos').update({codigo:nuevo_activo})
         cf.addData('inventario.json',inventario)
+        rs.showSuccess('Activo')
         addMore = rs.yesORnot('Desea ingresar otro activo dentro de la misma transaccion?')
         cf.clear_screen()
         

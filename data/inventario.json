@@ -7873,7 +7873,20 @@
             "Asignado_A": "N/A"
         }
     },
-    "personas": {},
+    "personas": {
+        "222": {
+            "id": "222",
+            "nombre": "simon",
+            "email": "aa",
+            "telefono": {
+                "movil": 23,
+                "casa": "33333333",
+                "personal": 23,
+                "oficina": 23
+            },
+            "activos_asignados": []
+        }
+    },
     "zonas": {},
     "asignaciones": {}
 }

@@ -3,16 +3,69 @@ import modules.coreFiles as cf
 from tabulate import tabulate
 
 def addPersonal(inventario):
-    personalData = inventario.get('personal')
-    if personalData:
-        for value in personalData.values():
-            if (value["id"] == id):
-                rs.showError("Ese ID ya se encuentra registrado")
-# def searchActivo(data):
-#     valor = input("Ingrese el id de la persona a buscar -> ")
-#     result= data['personal'].get(valor)
-#     transaccion,formulario,codigo,serial,marca,categoria,tipo,nombre,proveedor,responsable,precio,estado,historial,asignado = result.values()
-#     displayList = [['Codigo transaccion',transaccion],['Nro formulario',formulario],['Codigo',codigo],['Serial',serial],['Marca',marca],['Categoria',categoria],['Tipo',tipo],['Nombre',nombre],['Proveedor',proveedor],['Responsable',responsable],['Precio',precio],['Estado',estado],['Asigado A',asignado]]
-#     print(tabulate(displayList,tablefmt="grid"))
-#     cf.pause_screen()
-#     cf.clear_screen()
+    addMore = True
+    while addMore:
+        id = rs.checkInput('str','Ingrese el id o nit de la persona')
+        personalData = inventario.get('personas')
+        if personalData:
+            for value in personalData.values():
+                if (value["id"] == id):
+                    rs.showError("Ese id o nit ya se encuentra registrado")
+                    addPersonal(inventario)
+                    return
+        nombre = rs.checkInput('str','Ingrese el nombre de la persona')
+        email = rs.checkInput('str','Ingrese el email de la persona')
+        movil = rs.checkInput('int',f'Ingrese el nro celular de {nombre}')
+        casa = rs.checkInput('int',f'Ingrese el nro fijo de {nombre}, si no tiene ingrese 0')
+        personal = rs.checkInput('int',f'Ingrese el nro personal de {nombre}, si no tiene ingrese 0')
+        oficina =  rs.checkInput('int',f'Ingrese el nro de oficina de {nombre}, si no tiene ingrese 0')  
+        
+        nuevo_personal = {
+            'id': id,
+            'nombre':nombre,
+            'email':email,
+            'telefono':{
+                'movil':movil,
+                'casa':casa,
+                'personal':personal,
+                'oficina':oficina   
+            },
+            'activos_asignados':[]
+        }      
+        
+        inventario.get('personas').update({id:nuevo_personal})
+        cf.addData('inventario.json',inventario)
+        addMore = rs.yesORnot('Desea ingresar otra persona?')
+        cf.clear_screen()
+
+def searchPersonal(data):
+    valor = input("Ingrese el id de la persona a buscar -> ")
+    result= data['personas'].get(valor)
+    id,nombre,email,telefonos,activos = result.values()
+    movil,casa,personal,oficina = telefonos.values()
+    displayList = [['Id',id],['Nombre',nombre],['Email',email],['Celular',movil],['Fijo',casa],['Nro Personal',personal],['Nro ofincina',oficina],['Activos asignados',activos]]
+    print(tabulate(displayList,tablefmt="grid"))
+    cf.pause_screen()
+    cf.clear_screen()
+
+def modifyPersonal(data, srcData):
+    if len(data) <= 0:
+        rs.showError('No se encontro informacion sobre ese activo')
+        cf.clear_screen()
+    else:
+        for key in data.keys():
+            if(key != 'id'):
+                if key != 'activos_asignados':
+                    if type(data[key]) == dict:
+                        for key2 in data[key].keys():
+                            if bool(rs.yesORnot(f'Desea modificar el {key2}')):
+                                cf.clear_screen()
+                                data[key][key2] = input(f'Ingrese el nuevo valor para {key2}: ')
+                    else:
+                        if bool(rs.yesORnot(f'Desea modificar el {key}')):
+                            cf.clear_screen()
+                            data[key] = input(f'Ingrese el nuevo valor para {key}: ')
+            srcData['personas'][data['id']].update(data)
+        cf.UpdateFile('inventario.json', srcData)
+        rs.showSuccess('Informacion modificada correctamente')
+        cf.clear_screen()
