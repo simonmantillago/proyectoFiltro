@@ -12,7 +12,7 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "asignado",
+            "estado": "No asignado",
             "historial": {},
             "Asignado_A": "N/A"
         },
@@ -7868,14 +7868,36 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "No asignado",
+            "estado": "Asignado",
             "historial": {},
-            "Asignado_A": "N/A"
+            "Asignado_A": "cam"
         }
     },
     "personas": {
-        "cam":0
+        "cam": {
+            "id": "cam",
+            "activos_asignados": [
+                "TE124"
+            ]
+        }
     },
-    "zonas": {},
-    "asignaciones": {}
+    "zonas": {
+        "bb": {
+            "id": "bb",
+            "activos_asignados": []
+        }
+    },
+    "asignaciones": {
+        "0001": {
+            "Numero": "0001",
+            "Fecha": "2024-02-29",
+            "Tipo": "personas",
+            "AsignadoA": "cam",
+            "Activos": [
+                "TE124"
+            ]
+        }
+    }
+
+
 }

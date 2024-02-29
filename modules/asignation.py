@@ -3,17 +3,18 @@ from datetime import datetime
 
 def addAsignation(inventario):
     activos=[]
-    numero=str(len(inventario['asignaciones'])).zfill(4)
+    numero=str(len(inventario['asignaciones'])+1).zfill(4)
     fecha=str(datetime.now().date())
 
 #################################### CON ESTE DEFINO SI VA A SER PERSONA O ZONA Y SI EXISTE ################################
 
     isTipo=True
     while isTipo:
+        Encargado=cf.rs.checkInput('str','Ingrese el nombre ')
         cf.clear_screen()
         op=cf.rs.checkInput('int','A quien va a realizar la asignacion:\n1. Persona\n2. Zona\n->')
         if op==1:
-            tipo='Persona'
+            tipo='personas'
             id_persona=cf.rs.checkInput('str','Ingrese el ID de la Persona a la cual se le asignara el o los productos')
             if id_persona in inventario['personas']:
                 id=id_persona
@@ -22,7 +23,7 @@ def addAsignation(inventario):
                 cf.rs.showError('el id no corresponde a ninguna persona registrada')
 
         elif op==2:
-            tipo='Zona'
+            tipo='zonas'
             id_zona=cf.rs.checkInput('str','Ingrese el ID de la Zona a la cual se le asignara el o los productos')
             if id_zona  in inventario['zonas']:
                 id=id_zona
@@ -37,8 +38,17 @@ def addAsignation(inventario):
         codigo=cf.rs.checkInput('srt','ingrese el codigo del producto a asignar').upper()
         if (codigo in inventario['activos']) and (codigo not in activos):
                 if (inventario['activos'][codigo]['estado']=='No asignado'):
+
                     activos.append(codigo)
+                    inventario['activos'][codigo]['Asignado_A']=id
+                    inventario['activos'][codigo]['estado']='Asignado'
+                    inventario[tipo][id]['activos_asignados'].append(codigo)
                     cf.rs.showSuccess(f'El activo {codigo} fue asignado con exito')
+                    nro_historial=numero=str(len(inventario[codigo]['historial'])+1).zfill(4)
+                    # historial={
+                    #      '':
+                    # }
+
                 else:
                     cf.rs.showError(f'el producto ya se encuenntra asignado a {inventario["activos"][codigo]["Asignado_A"]}')
         else:
@@ -50,6 +60,7 @@ def addAsignation(inventario):
             break
             
 
+############ AÑADIR ASIGNACIONES A DICCIONARIO ASIGNACIONES ############################################################################
 
     Asignation={
 
@@ -60,7 +71,12 @@ def addAsignation(inventario):
     'Activos':activos
     }
 
-###### CAMBIAR ESTADOS, AÑADIR POSESIÓN ##############################################################################
+
+    inventario['asignaciones'].update({numero:Asignation})
+
+    
+
+    cf.addData('inventario.json',inventario)
 
 ##### CREAR HISTORIAL ###############################################################################################
 
