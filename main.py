@@ -11,7 +11,7 @@ inventario ={
 
 def main():  
     cf.checkFile('inventario.json',inventario)
-    main_menu(cf.readDataFile("inventario.json"))
+    main_menu()
 
 if __name__ == '__main__':
     main()

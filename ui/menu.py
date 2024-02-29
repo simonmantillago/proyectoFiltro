@@ -4,15 +4,15 @@ import modules.fileTranfer as ft
 from tabulate import tabulate
 import sys
 data_inventario = {}
-def main_menu(inventario):
-    
+def main_menu():
+    inventario = cf.readDataFile("inventario.json")
     global data_inventario 
     data_inventario = inventario
-    ft.convertExel(data_inventario)
+    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
-    def wrapper(func):
+    def wrapper(func,*params):
         cf.clear_screen()
-        func()
+        func(*params)
         main_menu()
     
     cf.clear_screen()
@@ -33,7 +33,7 @@ def main_menu(inventario):
     elif op == "2":
         wrapper(personal_menu)
     elif op == "3":
-        pass
+        wrapper(zonas_menu)
     elif op == "4":
         wrapper(asignaciones_menu)
     elif op == "5":
@@ -46,9 +46,9 @@ def main_menu(inventario):
         main_menu()
 
 def activos_menu():
-    def wrapper(func):
+    def wrapper(func,*params):
         cf.clear_screen()
-        func()
+        func(*params)
         activos_menu()
 
     title = """
@@ -57,7 +57,7 @@ def activos_menu():
     +++++++++++++++
     """
     print(title)
-    menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Salir"]]
+    menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
     print(tabulate(menu, tablefmt="grid"))
 
     op = input("\n>> ")
@@ -66,16 +66,20 @@ def activos_menu():
         pass
     elif op == "2":
         pass
+    elif op == "3":
+        wrapper(cf.delData,'activos',data_inventario)
     elif op == "4":
+        pass
+    elif op == "5":
         wrapper(main_menu)
     else:
         cf.clear_screen()
         activos_menu()
 
 def personal_menu():
-    def wrapper(func):
+    def wrapper(func,*params):
         cf.clear_screen()
-        func()
+        func(*params)
         personal_menu()
         
     title = """
@@ -94,7 +98,7 @@ def personal_menu():
     elif op == "2":
         pass
     elif op == "3":
-        pass
+        wrapper(cf.delData,'personas',data_inventario)
     elif op == "4":
         pass
     elif op == "5":
@@ -103,10 +107,41 @@ def personal_menu():
         cf.clear_screen()
         personal_menu()
 
-def asignaciones_menu():
-    def wrapper(func):
+def zonas_menu():
+    def wrapper(func,*params):
         cf.clear_screen()
-        func()
+        func(*params)
+        zonas_menu()
+
+    title = """
+    +++++++++++++
+    +   Zonas   +
+    +++++++++++++
+    """
+    print(title)
+    menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
+    print(tabulate(menu, tablefmt="grid"))
+
+    op = input("\n>> ")
+
+    if op == "1":
+        pass
+    elif op == "2":
+        pass
+    elif op == "3":
+        wrapper(cf.delData,'zonas',data_inventario)
+    elif op == "4":
+        pass
+    elif op == "5":
+        wrapper(main_menu)
+    else:
+        cf.clear_screen()
+        zonas_menu()
+
+def asignaciones_menu():
+    def wrapper(func,*params):
+        cf.clear_screen()
+        func(*params)
         asignaciones_menu()
 
     title = """
@@ -132,9 +167,9 @@ def asignaciones_menu():
 
 
 def reports_menu(): 
-    def wrapper(func):
+    def wrapper(func,*params):
         cf.clear_screen()
-        func()
+        func(*params)
         reports_menu()
 
     title = """
@@ -149,11 +184,11 @@ def reports_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(listarTodosActivos)
+        wrapper(cf.listarActivos,data_inventario)
     elif op == "2":
-        wrapper(listarActivosCategori)
+        pass
     elif op == "3":
-        wrapper(listarActivosDaño)
+        pass
     elif op == "4":
         pass
     elif op == "5":
@@ -165,9 +200,9 @@ def reports_menu():
         reports_menu()
 
 def movimientos_menu():
-    def wrapper(func):
+    def wrapper(func,*params):
         cf.clear_screen()
-        func()
+        func(*params)
         movimientos_menu()
 
     title = """
