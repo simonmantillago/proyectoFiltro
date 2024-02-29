@@ -12,7 +12,7 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "No asignado",
+            "estado": "asignado",
             "historial": {},
             "Asignado_A": "N/A"
         },
@@ -7873,7 +7873,13 @@
             "Asignado_A": "N/A"
         }
     },
-    "personas": {},
-    "zonas": {},
+    "personas": {
+        "aa":{"nombre":1,
+                "carro":2},
+        "dd":0
+    },
+    "zonas": {
+        "bb":{}
+    },
     "asignaciones": {}
 }
