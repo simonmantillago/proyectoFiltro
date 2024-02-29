@@ -1,9 +1,11 @@
 import modules.coreFiles as cf
 import modules.reusable as rs
 import modules.fileTranfer as ft
+import modules.asignation as a
 import modules.activosController as ac
 import modules.personalController as pc
 import modules.zonasController as zc
+
 from tabulate import tabulate
 import sys
 data_inventario = {}
@@ -11,7 +13,7 @@ def main_menu():
     inventario = cf.readDataFile("inventario.json")
     global data_inventario 
     data_inventario = inventario
-    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
+    #ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
     def wrapper(func,*params):
         cf.clear_screen()
@@ -164,9 +166,9 @@ def asignaciones_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(a.addAsignation,data_inventario)
     elif op == "2":
-        pass
+        wrapper(a.search_Asignation)
     elif op == "3":
         wrapper(main_menu)
     else:
