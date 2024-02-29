@@ -2,9 +2,7 @@ import modules.coreFiles as cf
 from datetime import datetime
 from tabulate import tabulate
 
-#######################################################################################################################################
-#######################################################################################################################################
-# ADD
+
 
 def addAsignation(inventario):
     #constantes
@@ -95,10 +93,6 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
     inventario['activos'][codigo]['historial'].update({nro_historial:historial})
 
 
-#######################################################################################################################################
-#######################################################################################################################################
-# SEARCH
-    
 def search_Asignation():
     inventario=cf.readDataFile('inventario.json')
     nro_asignation=cf.rs.checkInput('str','Ingrese el numero de la asignacion a buscar')
