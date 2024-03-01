@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import modules.reusable as rs
+from ui.menu import reports_menu
 BASE="data/"
 
 def clear_screen():
@@ -47,3 +48,5 @@ def delData(op,data):
     else:
         rs.showError('No hay informacion registrada')
     clear_screen()
+    
+    

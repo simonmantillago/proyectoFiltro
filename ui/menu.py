@@ -124,7 +124,7 @@ def zonas_menu():
 
     title = """
     +++++++++++++
-    +   Zonas   +
+    +   ZONAS   +
     +++++++++++++
     """
     print(title)
@@ -194,9 +194,9 @@ def reports_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(cf.listarActivos,data_inventario)
     elif op == "2":
-        pass
+        wrapper(cf.listActivosCategoria, data_inventario, "Equipo de computo")
     elif op == "3":
         pass
     elif op == "4":
