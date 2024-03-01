@@ -26,7 +26,7 @@ def listarActivos(data_inventario):
     else:
             print(f"No hay activos aun.")
             cf.pause_screen()
-            cf.clear_screen
+            cf.clear_screen()
 
 def listActivosCategoria(data_inventario):
     while True:
@@ -47,7 +47,7 @@ def listActivosCategoria(data_inventario):
                     nombre = activo["nombre"]
                     categoria = activo["categoria"]
                     numero_serial = activo["numero_serial"]
-                    subLista = [codigo, nombre,categoria, numero_serial]
+                    subLista = [codigo, nombre, categoria, numero_serial]
                     listaEquipos.append(subLista)
             if listaEquipos:
                 linesPorPage = 30
@@ -132,45 +132,87 @@ def listActivosCategoria(data_inventario):
                 cf.reports_menu()
 #LISTAR ACTIVOS DADOS DE BAJA POR DAÑO 
 def listarActivosDaño(data_inventario):
-    while True:
+    lista = []
+    for codigo, activo in data_inventario["activos"].items():
+        if activo["estado"] == "dado de baja por daño":
+            nombre = activo["nombre"]
+            estado = activo["estado"]
+            numero_serial = activo["numero_serial"]
+            subLista = [codigo, nombre, estado, numero_serial]
+            lista.append(subLista)
     
-        opcion = (""" 
-                1. Listar categoria equipos de computo 
-                2. Listar categoria juegos
-                3. Listar categoria electrodomesticos
-                4. Volver al menu de reportes
-                """)
-        print(opcion)
-        op = input(":> ")
-        if op == "1":
-            lista= []
-            for codigo, activo in data_inventario["activos"].items():
-                if activo["estado"] == "No asignado":
-                    nombre = activo["nombre"]
-                    estado = activo["estado"]
-                    numero_serial = activo["numero_serial"]
-                    subLista = [codigo, nombre,estado, numero_serial]
-                    lista.append(subLista)
-                if lista:
-                    linesPorPage = 30
-                    totalPag = (len(lista) - 1) // linesPorPage + 1
-                    for idx in range(totalPag):
-                        cf.clear_screen()
-                        subset_data = lista[idx * linesPorPage: (idx + 1) * linesPorPage]
-                        print(tabulate(subset_data, headers=["CODIGO", "NOMBRE","ESTADO", "NUMERO SERIAL"], tablefmt="fancy_grid"))
-                        print(f'Pagina {idx + 1} de {totalPag}')
-                        cf.pause_screen()
-                        op = input('Si desea volver al menú, presione 0: ')
-                        if op == "0":
-                            cf.clear_screen()
-                            break  
-                        print(opcion)
-                    else:
-                        print(f"Ya todos estan asignados ")
-                        cf.pause_screen()
-                        cf.clear_screen()
-        elif op == "4":
-                cf.clear_screen()  
-                cf.reports_menu()    
+    if lista:  # Si la lista no está vacía, imprime los activos no asignados
+        linesPorPage = 30
+        totalPag = (len(lista) - 1) // linesPorPage + 1
+        for idx in range(totalPag):
+            cf.clear_screen()
+            subset_data = lista[idx * linesPorPage: (idx + 1) * linesPorPage]
+            print(tabulate(subset_data, headers=["CODIGO", "NOMBRE", "ESTADO", "NUMERO SERIAL"], tablefmt="fancy_grid"))
+            print(f'Pagina {idx + 1} de {totalPag}')
+            cf.pause_screen()
+            op = input('Si desea volver al menú, presione 0: ')
+            if op == "0":
+                cf.clear_screen()
+                cf.reports_menu()
 
-            
+    else:
+        print("No hay activos con estado 'No asignado'")
+        cf.pause_screen()
+        cf.clear_screen()
+#LISTAR ACTIVOS Y ASIGNACION 
+def listarActivosAsignacion (data_inventario):
+    lista = []
+    for i in data_inventario["activos"]:
+        codigo = i
+        numero_serial = data_inventario["activos"][i]["numero_serial"]
+        nombre = data_inventario["activos"][i]["nombre"]
+        asignacion = data_inventario["activos"][i]["Asignado_A"]
+        subLista = [codigo, nombre,asignacion, numero_serial]
+        lista.append(subLista)
+    if lista:
+        linesPorPage = 30
+        totalPag = (len(lista) - 1) // linesPorPage + 1
+        for idx in range(totalPag):
+            cf.clear_screen()
+            subset_data = lista[idx * linesPorPage: (idx + 1) * linesPorPage]
+            print(tabulate(subset_data, headers=["CODIGO", "NOMBRE",  "ASIGNADO A","NUMERO SERIAL"], tablefmt="fancy_grid"))
+            print(f'Pagina {idx + 1} de {totalPag}')
+            cf.pause_screen()
+            op = input('Si desea volver al menú, presione 0: ')
+            if op == "0":
+                cf.clear_screen()  
+                cf.reports_menu()
+    else:
+            print(f"No hay activos aun.")
+            cf.pause_screen()
+            cf.clear_screen()
+#LISTAR HISTORIAL DE MOV. DE ACTIVO
+def listarHistorial(data_inventario):
+    lista = []
+    for codigo, activo in data_inventario["activos"].items():
+        historial = activo.get("historial", {}) 
+        if historial: 
+            nro_historial = historial.get("nro_historial")
+            fecha = historial.get("fecha")
+            encargado = historial.get("encargado")
+            tipo_mov = historial.get("tipo_mov")
+            lista.append([nro_historial, fecha, encargado, tipo_mov])
+
+    if lista:
+        linesPorPage = 30
+        totalPag = (len(lista) - 1) // linesPorPage + 1
+        for idx in range(totalPag):
+            cf.clear_screen()
+            subset_data = lista[idx * linesPorPage: (idx + 1) * linesPorPage]
+            print(tabulate(subset_data, headers=["Nro. HISTOPRIAL", "FECHA", "ENCARGADO", "TIPO DE MOVIMIENTO"], tablefmt="fancy_grid"))
+            print(f'Pagina {idx + 1} de {totalPag}')
+            cf.pause_screen()
+            op = input('Si desea volver al menú, presione 0: ')
+            if op == "0":
+                cf.clear_screen()  
+                cf.reports_menu()
+    else:
+        print(f"No hay historial de movimientos disponibles.")
+        cf.pause_screen()
+        cf.clear_screen()
+

@@ -201,9 +201,9 @@ def reports_menu():
     elif op == "3":
         wrapper(rc.listarActivosDaño, data_inventario)
     elif op == "4":
-        pass
+        wrapper(rc.listarActivosAsignacion, data_inventario)
     elif op == "5":
-        pass
+        wrapper(rc.listarHistorial,data_inventario)
     elif op == "6":
         wrapper(main_menu)
     else:

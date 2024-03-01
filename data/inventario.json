@@ -13,7 +13,9 @@
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
             "estado": "dado de baja por daño",
-            "historial": {},
+            "historial": {
+            },
+
             "Asignado_A": "N/A"
         },
         "MON001": {
@@ -28,7 +30,7 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "300000",
-            "estado": "No asignado",
+            "estado": "dado de baja por daño",
             "historial": {},
             "Asignado_A": "N/A"
         },
@@ -38,7 +40,7 @@
             "codigo": "TE001",
             "numero_serial": "KBM130091706",
             "marca": "Compumax",
-            "categoria": "Equipo de computo",
+            "categoria": "JueEquipo de computoos",
             "tipo": "Teclado",
             "nombre": "Teclado - Bodg50-9051-900-0017 GMR ESC   ",
             "proveedor": "Compumax Computer ",
