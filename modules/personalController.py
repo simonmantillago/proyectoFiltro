@@ -5,14 +5,23 @@ from tabulate import tabulate
 def addPersonal(inventario):
     addMore = True
     while addMore:
-        id = rs.checkInput('str','Ingrese el id o nit de la persona o empresa')
-        personalData = inventario.get('personas')
+        id = rs.checkInput('str','Ingrese el id o nit de la persona o empresa').upper()
+        personalData = inventario.get('personas',{})
+        zonasData = inventario.get('zonas', {})
         if personalData:
             for value in personalData.values():
                 if (value["id"] == id):
                     rs.showError("Ese id o nit ya se encuentra registrado")
                     addPersonal(inventario)
                     return
+        
+        if len(zonasData):
+            for valor in zonasData.values():
+                if (valor["nroZona"] == id):
+                    rs.showError("Ese id o nit ya se encuentra registrado")
+                    addPersonal(inventario)
+                    return
+                
         nombre = rs.checkInput('str','Ingrese el nombre de la persona')
         email = rs.checkInput('str','Ingrese el email de la persona')
         movil = rs.checkInput('int',f'Ingrese el nro celular de {nombre}')

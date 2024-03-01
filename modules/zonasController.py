@@ -5,8 +5,9 @@ from tabulate import tabulate
 def addZona(inventario):
     addMore = True
     while addMore:
-        nroZona = rs.checkInput('str', 'Ingrese el número de la zona')
+        nroZona = rs.checkInput('str', 'Ingrese el número de la zona').upper()
         zonaData = inventario.get('zonas', {})
+        personalData = inventario.get('personas',{})
         
         if zonaData:
             for value in zonaData.values():
@@ -15,7 +16,13 @@ def addZona(inventario):
                     cf.clear_screen()
                     addZona(inventario)
                     return
-        
+        if len(personalData):
+            for value in personalData.values():
+                if (value["id"] == id):
+                    rs.showError("Ese id o nit ya se encuentra registrado")
+                    addZona(inventario)
+                    return
+                
         nombreZona = rs.checkInput('str', 'Ingrese el nombre de la zona')
         
         if zonaData:
