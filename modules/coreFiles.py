@@ -56,23 +56,26 @@ def listarActivos(data_inventario):
 
 def listActivosCategoria(data_inventario, tipo):
     
-    op = input("""
+    opciones = input("""
                1. Listar categoria Monitor 
                2. Listar categoria CPU
                3. Listar categoria Mouse
                4. Listar categoria Teclado
                
                """)
+    print(opciones)
+    op=input(' >> ')
     if op == "1":
         listaMonitor = []
         for codigo, activo in data_inventario["activos"].items():
-            if activo["tipo"] == "Monitor":
+            if activo["categoria"] == "Equipo de computo":
                 nombre = activo["nombre"]
+                categoria = activo["categoria"]
                 numero_serial = activo["numero_serial"]
                 subLista = [codigo, nombre, numero_serial]
                 listaMonitor.append(subLista)
         if listaMonitor:
-            print(tabulate(listaMonitor, headers=["CODIGO", "NOMBRE", "NUMERO SERIAL"], tablefmt="fancy_grid"))
+            print(tabulate(listaMonitor, headers=["CODIGO", "NOMBRE", "CATEGORIA", "NUMERO SERIAL"], tablefmt="fancy_grid"))
             pause_screen() 
             clear_screen() 
             reports_menu() 
