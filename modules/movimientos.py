@@ -11,7 +11,7 @@ def mov(inventario,estado,tipo_mov):
         inventario['activos'][codigo]['Asignado_A']=''
         inventario['activos'][codigo]['estado']=estado
         inventario['asignaciones'][id]['Activos'].remove(codigo)
-        tipo=inventario['asignaciones'][id]['tipo']
+        tipo=inventario['asignaciones'][id]['Tipo']
         if tipo=='zonas':
             inventario[tipo][id]['cantidad_activos']-=1
         inventario[tipo][id]['activos_asignados'].remove(codigo)

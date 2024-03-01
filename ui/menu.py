@@ -14,7 +14,7 @@ def main_menu():
     inventario = cf.readDataFile("inventario.json")
     global data_inventario 
     data_inventario = inventario
-    #ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
+    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
     def wrapper(func,*params):
         cf.clear_screen()
@@ -232,7 +232,7 @@ def movimientos_menu():
     elif op == "2":
         wrapper(m.mov,data_inventario,'Dado de baja','Dar de Baja')
     elif op == "3":
-        wrapper(m.cambiar_Asignación,data_inventario,'retornara el activo')
+        wrapper(m.cam,data_inventario)
     elif op == "4":
         wrapper(m.movimiento,data_inventario,'Garantia','Garantia')
     elif op == "5":
