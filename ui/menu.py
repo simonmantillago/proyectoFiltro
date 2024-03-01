@@ -5,6 +5,7 @@ import modules.asignation as a
 import modules.activosController as ac
 import modules.personalController as pc
 import modules.zonasController as zc
+import modules.reportsController as rc
 
 from tabulate import tabulate
 import sys
@@ -191,14 +192,14 @@ def reports_menu():
     menu = [["1.", "Listar todos los activos"],["2.", "Listar activos por categoria"],["3.", "Listar activos dados de baja"],["4.", "Listar activos y asignacion"],["5.", "Listar historial de movimiento de activo"],["6.", "Salir"]]
     print(tabulate(menu, tablefmt="grid"))
 
-    op = input("\n>> ")
+    op = input("\n :> ")
 
     if op == "1":
-        wrapper(cf.listarActivos,data_inventario)
+        wrapper(rc.listarActivos,data_inventario)
     elif op == "2":
-        wrapper(cf.listActivosCategoria, data_inventario, "Equipo de computo")
+        wrapper(rc.listActivosCategoria, data_inventario)
     elif op == "3":
-        pass
+        wrapper(rc.listarActivosDaño, data_inventario)
     elif op == "4":
         pass
     elif op == "5":
