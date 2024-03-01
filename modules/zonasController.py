@@ -19,7 +19,6 @@ def addZona(inventario):
         nombreZona = rs.checkInput('str', 'Ingrese el nombre de la zona')
         
         if zonaData:
-            # Hacer una copia de los valores para evitar RuntimeError
             for value in list(zonaData.values()):
                 if value['nombreZona'] == nombreZona:
                     rs.showError("Error: El nombre de la zona ya se encuentra en uso")

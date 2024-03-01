@@ -16,9 +16,24 @@ def addPersonal(inventario):
         nombre = rs.checkInput('str','Ingrese el nombre de la persona')
         email = rs.checkInput('str','Ingrese el email de la persona')
         movil = rs.checkInput('int',f'Ingrese el nro celular de {nombre}')
-        casa = rs.checkInput('int',f'Ingrese el nro fijo de {nombre}, si no tiene ingrese 0')
-        personal = rs.checkInput('int',f'Ingrese el nro personal de {nombre}, si no tiene ingrese 0')
-        oficina =  rs.checkInput('int',f'Ingrese el nro de oficina de {nombre}, si no tiene ingrese 0')  
+        casa = rs.yesORnot('Desea ingresar un numero fijo?')
+        
+        if casa == True:
+            casa = rs.checkInput('int',f'Ingrese el nro fijo de {nombre}')
+        else:
+            casa = 'No tiene'   
+                                
+        personal = rs.yesORnot('Desea ingresar un numero personal?')
+        if personal == True:
+            personal = rs.checkInput('int',f'Ingrese el nro personal de {nombre}')
+        else:
+            personal = 'No tiene'    
+        
+        oficina = rs.yesORnot('Desea ingresar un numero de oficina?')
+        if oficina == True:
+            oficina = rs.checkInput('int',f'Ingrese el nro de oficina de {nombre}')
+        else:
+            oficina = 'No tiene'  
         
         nuevo_personal = {
             'id': id,
