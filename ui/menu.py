@@ -5,6 +5,7 @@ import modules.asignation as a
 import modules.activosController as ac
 import modules.personalController as pc
 import modules.zonasController as zc
+import modules.movimientos as m
 
 from tabulate import tabulate
 import sys
@@ -227,13 +228,13 @@ def movimientos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(m.movimiento,data_inventario,'retornara el activo','No asignado','Retorno')
     elif op == "2":
-        pass
+        wrapper(m.movimiento,data_inventario,'dara de baja al activo','Dado de baja','Dado de baja')
     elif op == "3":
-        pass
+        wrapper(m.cambiar_Asignación,data_inventario,'retornara el activo')
     elif op == "4":
-        pass
+        wrapper(m.movimiento,data_inventario,'solicitara la garantia del activo','Garantia','En garantia')
     elif op == "5":
         wrapper(main_menu)
     else:

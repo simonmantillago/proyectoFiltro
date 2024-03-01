@@ -56,14 +56,13 @@ def addAsignation(inventario):
                     else:
                         add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado)# asigna, cambia estados e ingresa info al json
                 else:
-                    cf.rs.showError(f'el producto ya se encuenntra asignado a {inventario["activos"][codigo]["Asignado_A"]}')
+                    cf.rs.showError(f'el producto se encuentra {inventario["activos"][codigo]["estado"]}')
         else:
                 cf.rs.showError('El id no corresponde a ningun activo registrado')
         isActivo=cf.rs.yesORnot('Desea agregar otro activo a la asignación')
         if activos==[]: ## si se quieren salir de la asignación 
-            isActivo=cf.rs.yesORnot('Desea salir de asignaciones')
+            isActivo=not(cf.rs.yesORnot('Desea salir de asignaciones'))
             cf.clear_screen()
-            break
         else:
             Asignation={
 
