@@ -34,7 +34,7 @@ def addZona(inventario):
             'nroZona': nroZona,
             'nombreZona': nombreZona,
             'total_capacidad': total_capacidad,
-            'capacidad': capacidad,
+            'cantidad_activos': capacidad,
             'activos_asignados': []
         }
         

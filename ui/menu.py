@@ -167,7 +167,7 @@ def asignaciones_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(a.addAsignation,data_inventario)
+        wrapper(a.addAsignation,data_inventario,'Asignacion')
     elif op == "2":
         wrapper(a.search_Asignation,data_inventario)
     elif op == "3":
@@ -228,13 +228,13 @@ def movimientos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(m.movimiento,data_inventario,'retornara el activo','No asignado','Retorno')
+        wrapper(m.mov,data_inventario,'No asignado','Retorno')
     elif op == "2":
-        wrapper(m.movimiento,data_inventario,'dara de baja al activo','Dado de baja','Dado de baja')
+        wrapper(m.mov,data_inventario,'Dado de baja','Dar de Baja')
     elif op == "3":
         wrapper(m.cambiar_Asignación,data_inventario,'retornara el activo')
     elif op == "4":
-        wrapper(m.movimiento,data_inventario,'solicitara la garantia del activo','Garantia','En garantia')
+        wrapper(m.movimiento,data_inventario,'Garantia','Garantia')
     elif op == "5":
         wrapper(main_menu)
     else:
