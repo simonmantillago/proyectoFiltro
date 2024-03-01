@@ -190,12 +190,11 @@ def listarActivosAsignacion (data_inventario):
 def listarHistorial(data_inventario):
     lista = []
     for codigo, activo in data_inventario["activos"].items():
-        historial = activo.get("historial", {}) 
-        if historial: 
-            nro_historial = historial.get("nro_historial")
-            fecha = historial.get("fecha")
-            encargado = historial.get("encargado")
-            tipo_mov = historial.get("tipo_mov")
+        historial = activo.get("historial", {})  # Obtener el historial de movimientos del activo
+        for nro_historial, movimiento in historial.items():
+            fecha = movimiento.get("fecha")
+            encargado = movimiento.get("encargado")
+            tipo_mov = movimiento.get("tipo_mov")
             lista.append([nro_historial, fecha, encargado, tipo_mov])
 
     if lista:
@@ -204,7 +203,7 @@ def listarHistorial(data_inventario):
         for idx in range(totalPag):
             cf.clear_screen()
             subset_data = lista[idx * linesPorPage: (idx + 1) * linesPorPage]
-            print(tabulate(subset_data, headers=["Nro. HISTOPRIAL", "FECHA", "ENCARGADO", "TIPO DE MOVIMIENTO"], tablefmt="fancy_grid"))
+            print(tabulate(subset_data, headers=["Nro. HISTORIAL", "FECHA", "ENCARGADO", "TIPO DE MOVIMIENTO"], tablefmt="fancy_grid"))
             print(f'Pagina {idx + 1} de {totalPag}')
             cf.pause_screen()
             op = input('Si desea volver al menú, presione 0: ')
@@ -215,4 +214,6 @@ def listarHistorial(data_inventario):
         print(f"No hay historial de movimientos disponibles.")
         cf.pause_screen()
         cf.clear_screen()
+
+
 

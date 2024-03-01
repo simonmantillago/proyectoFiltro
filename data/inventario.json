@@ -14,7 +14,20 @@
             "precio": "2000000",
             "estado": "dado de baja por daño",
             "historial": {
+                "1": {
+                    "nro_historial": "1",
+                    "encargado": "Juan",
+                    "fecha": "2024-02-28",
+                    "tipo_mov": ""
+                },
+                "2": {
+                    "nro_historial": "2",
+                    "encargado": "Maria",
+                    "fecha": "2024-02-29",
+                    "tipo_mov": "Reasignación"
+                }
             },
+            
 
             "Asignado_A": "N/A"
         },
