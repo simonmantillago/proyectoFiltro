@@ -35,30 +35,15 @@ def UpdateFile(archivo,data):
         json.dump(data,fw,indent=4)
         
 def delData(op,data):
-    delVal = input(f"Ingrese el codigo de {op} que desea borrar -> ")
-    if delVal in data[op]:
-        data[op].pop(delVal)
-        UpdateFile('inventario.json',data)
-        rs.showSuccess('Se ha eliminado correctamente')
-        clear_screen()
-        
+    if len(data[op]):
+        delVal = input(f"Ingrese el codigo de {op} que desea borrar -> ").upper()
+        if delVal in data[op]:
+            data[op].pop(delVal)
+            UpdateFile('inventario.json',data)
+            rs.showSuccess('Se ha eliminado correctamente')
+            clear_screen()
+        else:
+            rs.showError('Ese codigo no se encuentra en la base de datos')
     else:
-        rs.showError('Ese codigo no se encuentra en la base de datos')
-        clear_screen()
-
-def addActivo(inventario):
-    codigo_transaccion = rs.checkInput('str','Ingrese el codigo de la transaccion')
-    while True:
-        numero_formulario = rs.checkInput()
-        codigo = rs.checkInput()
-        numero_serial = rs.checkInput()
-        marca = rs.checkInput()
-        categoria = rs.checkInput()
-        tipo = rs.checkInput()
-        nombre = rs.checkInput()
-        proveedor = rs.checkInput()
-        empresa_responsable = rs.checkInput()
-        precio = rs.checkInput()
-        estado = rs.checkInput()
-        historial = rs.checkInput()
-        Asignado_A = rs.checkInput()
+        rs.showError('No hay informacion registrada')
+    clear_screen()
