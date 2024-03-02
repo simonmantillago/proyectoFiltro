@@ -19,8 +19,11 @@ def mov(inventario,estado,tipo_mov,encargado):
     else:
         cf.rs.showError('El codigo no coincide con ningun activo registrado')
         return
-    
     return codigo
+
+
+
+
 def modificar_data(inventario,estado,tipo_mov,encargado,codigo):
     fecha=str(datetime.now().date())
     nro_historial=str(len(inventario['activos'][codigo]['historial'])+1).zfill(3)
@@ -45,11 +48,14 @@ def modificar_data(inventario,estado,tipo_mov,encargado,codigo):
         cf.rs.showSuccess('El movimiento se realizó con exito')
 
 
+
 def cam(inventario,encargado):
     codigo=mov(inventario,'No asignado','Retorno',encargado)
     if codigo==None:
         return
     addAsignation(inventario,'Re-asignacion',encargado,codigo)
+
+
 
 def addAsignation(inventario,tipo,encargado,codigo):
 #constantes
@@ -106,7 +112,6 @@ def addAsignation(inventario,tipo,encargado,codigo):
     else:
         add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado)# asigna, cambia estados e ingresa info al json
                 
-        
     if tipo=='zonas':
         numero=id
     if tipo =='personas':
@@ -129,6 +134,9 @@ def addAsignation(inventario,tipo,encargado,codigo):
     cf.clear_screen()
     cf.addData('inventario.json',inventario)
 
+
+
+
 def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
 
     activos.append(codigo)
@@ -140,7 +148,7 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
         'nro_historial':nro_historial,
         'encargado':encargado,
         'fecha':fecha,
-        'tipo_mov':tipo
+        'tipo_mov':'Re asignación'
     }
     inventario['activos'][codigo]['historial'].update({nro_historial:historial})
 
