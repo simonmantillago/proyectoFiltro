@@ -12,27 +12,8 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "Dado de baja",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "dfs",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "sfs",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Dar de Baja"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Dar de Baja"
-                }
-            },
+            "estado": "No asignado",
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MON001": {
@@ -95,22 +76,9 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "Garantia",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "dfs",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "asdf",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Garantia"
-                }
-            },
-            "Asignado_A": ""
+            "estado": "No asignado",
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MON002": {
             "codigo_transaccion": "327",
@@ -173,69 +141,8 @@
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "dfs",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "cpoo3",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "005": {
-                    "nro_historial": "005",
-                    "encargado": "sdf",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "006": {
-                    "nro_historial": "006",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "007": {
-                    "nro_historial": "007",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "008": {
-                    "nro_historial": "008",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "009": {
-                    "nro_historial": "009",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "010": {
-                    "nro_historial": "010",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
-            "Asignado_A": ""
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MON003": {
             "codigo_transaccion": "327",
@@ -298,69 +205,8 @@
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "sdf",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "005": {
-                    "nro_historial": "005",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "006": {
-                    "nro_historial": "006",
-                    "encargado": "qs",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "007": {
-                    "nro_historial": "007",
-                    "encargado": "qs",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "008": {
-                    "nro_historial": "008",
-                    "encargado": "asas",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "009": {
-                    "nro_historial": "009",
-                    "encargado": "asas",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "010": {
-                    "nro_historial": "010",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
-            "Asignado_A": ""
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MON004": {
             "codigo_transaccion": "327",
@@ -422,46 +268,9 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "Garantia",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "005": {
-                    "nro_historial": "005",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "006": {
-                    "nro_historial": "006",
-                    "encargado": "aea",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Garantia"
-                }
-            },
-            "Asignado_A": ""
+            "estado": "No asignado",
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MON005": {
             "codigo_transaccion": "327",
@@ -5755,16 +5564,9 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "Asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "er",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                }
-            },
-            "Asignado_A": "A4"
+            "estado": "No asignado",
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MO088": {
             "codigo_transaccion": "327",
@@ -5826,16 +5628,9 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "Asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "dx",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                }
-            },
-            "Asignado_A": "A4"
+            "estado": "No asignado",
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MO089": {
             "codigo_transaccion": "327",
@@ -5898,20 +5693,7 @@
             "empresa_responsable": "Campuslands",
             "precio": "150000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MO090": {
@@ -5975,20 +5757,7 @@
             "empresa_responsable": "Campuslands",
             "precio": "150000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "gr",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MO091": {
@@ -6564,33 +6333,8 @@
             "empresa_responsable": "Campuslands",
             "precio": "150000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "ad",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
-            "Asignado_A": ""
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MO100": {
             "codigo_transaccion": "327",
@@ -6653,20 +6397,7 @@
             "empresa_responsable": "Campuslands",
             "precio": "150000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MO101": {
@@ -7977,27 +7708,8 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "Dado de baja",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "s",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "cp122",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Garantia"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Dar de Baja"
-                }
-            },
+            "estado": "No asignado",
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MON122": {
@@ -8029,92 +7741,7 @@
             "empresa_responsable": "Campuslands",
             "precio": "150000",
             "estado": "No asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "005": {
-                    "nro_historial": "005",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "006": {
-                    "nro_historial": "006",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "007": {
-                    "nro_historial": "007",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "008": {
-                    "nro_historial": "008",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "009": {
-                    "nro_historial": "009",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "010": {
-                    "nro_historial": "010",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "011": {
-                    "nro_historial": "011",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "012": {
-                    "nro_historial": "012",
-                    "encargado": "we",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "013": {
-                    "nro_historial": "013",
-                    "encargado": "we",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "014": {
-                    "nro_historial": "014",
-                    "encargado": "w",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                }
-            },
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MO122": {
@@ -8145,15 +7772,8 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "Dado de baja",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "as",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Dar de Baja"
-                }
-            },
+            "estado": "No asignado",
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MON123": {
@@ -8184,34 +7804,9 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "Dado de baja",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "te123",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "adsa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Dar de Baja"
-                }
-            },
-            "Asignado_A": ""
+            "estado": "No asignado",
+            "historial": {},
+            "Asignado_A": "N/A"
         },
         "MO123": {
             "codigo_transaccion": "327",
@@ -8241,21 +7836,8 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "2000000",
-            "estado": "Dado de baja",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "s",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "personas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "a",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Dar de Baja"
-                }
-            },
+            "estado": "No asignado",
+            "historial": {},
             "Asignado_A": "N/A"
         },
         "MON124": {
@@ -8286,129 +7868,12 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "Asignado",
-            "historial": {
-                "001": {
-                    "nro_historial": "001",
-                    "encargado": "sd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "002": {
-                    "nro_historial": "002",
-                    "encargado": "asd",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "003": {
-                    "nro_historial": "003",
-                    "encargado": "asa",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                },
-                "004": {
-                    "nro_historial": "004",
-                    "encargado": "te124",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "Retorno"
-                },
-                "005": {
-                    "nro_historial": "005",
-                    "encargado": "d",
-                    "fecha": "2024-03-01",
-                    "tipo_mov": "zonas"
-                }
-            },
-            "Asignado_A": "A1"
+            "estado": "No asignado",
+            "historial": {},
+            "Asignado_A": "N/A"
         }
     },
-    "personas": {
-        "A2": {
-            "id": "A2",
-            "nombre": "d",
-            "email": "d",
-            "telefono": {
-                "movil": 1,
-                "casa": "No tiene",
-                "personal": "No tiene",
-                "oficina": "No tiene"
-            },
-            "activos_asignados": []
-        },
-        "A3": {
-            "id": "A3",
-            "nombre": "a",
-            "email": "a",
-            "telefono": {
-                "movil": 1,
-                "casa": "No tiene",
-                "personal": "No tiene",
-                "oficina": "No tiene"
-            },
-            "activos_asignados": []
-        }
-    },
-    "zonas": {
-        "A1": {
-            "nroZona": "A1",
-            "nombreZona": "aa",
-            "total_capacidad": 1,
-            "cantidad_activos": 1,
-            "activos_asignados": [
-                "TE124"
-            ]
-        },
-        "A4": {
-            "nroZona": "A4",
-            "nombreZona": "sd",
-            "total_capacidad": 4,
-            "cantidad_activos": 2,
-            "activos_asignados": [
-                "TE088",
-                "TE089"
-            ]
-        },
-        "B1": {
-            "nroZona": "B1",
-            "nombreZona": "as",
-            "total_capacidad": "as",
-            "cantidad_activos": 0,
-            "activos_asignados": []
-        }
-    },
-    "asignaciones": {
-        "A3": {
-            "Numero": "A3",
-            "Fecha": "2024-03-01",
-            "Tipo": "personas",
-            "AsignadoA": "A3",
-            "Activos": []
-        },
-        "A1": {
-            "Numero": "A1",
-            "Fecha": "2024-03-01",
-            "Tipo": "zonas",
-            "AsignadoA": "A1",
-            "Activos": [
-                "TE124"
-            ]
-        },
-        "A4": {
-            "Numero": "A4",
-            "Fecha": "2024-03-01",
-            "Tipo": "zonas",
-            "AsignadoA": "A4",
-            "Activos": [
-                "TE088",
-                "TE089"
-            ]
-        },
-        "A2": {
-            "Numero": "A2",
-            "Fecha": "2024-03-01",
-            "Tipo": "personas",
-            "AsignadoA": "A2",
-            "Activos": []
-        }
-    }
+    "personas": {},
+    "zonas": {},
+    "asignaciones": {}
 }
