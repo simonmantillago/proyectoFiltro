@@ -239,7 +239,7 @@ def movimientos_menu():
         wrapper(m.cam,data_inventario,encargado)
     elif op == "4":
         encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
-        wrapper(m.movimiento,data_inventario,'Garantia','Garantia',encargado)
+        wrapper(m.mov,data_inventario,'Garantia','Garantia',encargado)
     elif op == "5":
         wrapper(main_menu)
     else:
