@@ -30,12 +30,12 @@ def listarActivos(data_inventario):
 
 def listActivosCategoria(data_inventario):
     while True:
-    
+        cf.clear_screen()
         opcion = (""" 
-                1. Listar categoria equipos de computo 
-                2. Listar categoria juegos
-                3. Listar categoria electrodomesticos
-                4. Volver al menu de reportes
+1. Listar categoria equipos de computo 
+2. Listar categoria juegos
+3. Listar categoria electrodomesticos
+4. Volver al menu de reportes
                 """)
         print(opcion)
         #EQUIPOS DE COMPUTO
@@ -59,6 +59,7 @@ def listActivosCategoria(data_inventario):
                     print(f'Pagina {idx + 1} de {totalPag}')
                     cf.pause_screen()
                     op = input('Si desea volver al menú, presione 0: ')
+                    cf.clear_screen()
                     if op == "0":
                         cf.clear_screen()
                         break  
