@@ -1,9 +1,9 @@
-import modules.reusable as rs
 import modules.coreFiles as cf 
 from tabulate import tabulate
+
 def addActivo(inventario):
-    codigo_transaccion = rs.checkInput('str','Ingrese el codigo de la transaccion')
-    numero_formulario = rs.checkInput('int','Ingrese el numero de formulario') ## puse para que fuera un int por que estaba como str
+    codigo_transaccion = cf.rs.checkInput('str','Ingrese el codigo de la transaccion')
+    numero_formulario = cf.rs.checkInput('str','Ingrese el numero de formulario') ## puse para que fuera un int por que estaba como str
     
     
     activosData = inventario.get('activos')
@@ -11,34 +11,34 @@ def addActivo(inventario):
         for value in activosData.values():
             if (value["codigo_transaccion"] == codigo_transaccion or
                 value["numero_formulario"] == numero_formulario):
-                rs.showError("Error: El codigo de transaccion o el numero de formulario ya existen en el inventario.")
+                cf.rs.showError("Error: El codigo de transaccion o el numero de formulario ya existen en el inventario.")
                 addActivo(inventario)
                 return
     addMore = True
     while addMore:
-        codigo = rs.checkInput('str','Ingrese el codigo del equipo').upper()
+        codigo = cf.rs.checkInput('str','Ingrese el codigo del equipo').upper()
         
         # Verificar si el codigo ya existe en el inventario
         if codigo in activosData:
-            rs.showError("Error: El codigo del equipo ya existe en el inventario.")
+            cf.rs.showError("Error: El codigo del equipo ya existe en el inventario.")
             cf.clear_screen() 
             continue
         
         
-        numero_serial = rs.checkInput('str','Ingrese el numero serial').upper()
+        numero_serial = cf.rs.checkInput('str','Ingrese el numero serial').upper()
         if any(value["numero_serial"] == numero_serial for value in activosData.values()):
-            rs.showError("Error: El numero serial ya existe en el inventario.")
+            cf.rs.showError("Error: El numero serial ya existe en el inventario.")
             cf.clear_screen()
             continue
         
         
-        marca = rs.checkInput('str','Ingrese la marca').capitalize()
-        categoria = rs.checkInput('str','Ingrese la categoria').capitalize()
-        tipo = rs.checkInput('str','Ingrese el tipo del equipo').capitalize()
-        nombre = rs.checkInput('str','Ingrese el nombre del equipo')
-        proveedor = rs.checkInput('str','Ingrese el nombre del proveedor')
-        empresa_responsable = rs.checkInput('str','Ingrese el nombre de la empresa responsable')
-        precio = rs.checkInput('float','Ingrese el precio del equipo') ## arregle este para que sea un float
+        marca = cf.rs.checkInput('str','Ingrese la marca').capitalize()
+        categoria = cf.rs.checkInput('str','Ingrese la categoria').capitalize()
+        tipo = cf.rs.checkInput('str','Ingrese el tipo del equipo').capitalize()
+        nombre = cf.rs.checkInput('str','Ingrese el nombre del equipo')
+        proveedor = cf.rs.checkInput('str','Ingrese el nombre del proveedor')
+        empresa_responsable = cf.rs.checkInput('str','Ingrese el nombre de la empresa responsable')
+        precio = cf.rs.checkInput('float','Ingrese el precio del equipo') ## arregle este para que sea un float
         estado = "No asignado"
         historial = {}
         Asignado_A = "N/A"
@@ -62,8 +62,8 @@ def addActivo(inventario):
         }
         inventario.get('activos').update({codigo:nuevo_activo})
         cf.addData('inventario.json',inventario)
-        rs.showSuccess('Activo registrado de manera correcta')
-        addMore = rs.yesORnot('Desea ingresar otro activo dentro de la misma transaccion?')
+        cf.rs.showSuccess('Activo registrado de manera correcta')
+        addMore = cf.rs.yesORnot('Desea ingresar otro activo dentro de la misma transaccion?')
         cf.clear_screen()
         
 def searchActivo(data):
@@ -77,13 +77,14 @@ def searchActivo(data):
             cf.pause_screen()
             cf.clear_screen()
         else:
-            rs.showError(f'No hay activos registrados con el codigo {valor}') ## puse mensaje de error por si no lo encontraba
+            cf.rs.showError(f'No hay activos registrados con el codigo {valor}') ## puse mensaje de error por si no lo encontraba
     else: 
-        rs.showError('No hay activos registrados')
+        cf.rs.showError('No hay activos registrados')
         cf.clear_screen()
+
 def modifyActivo(data, srcData):
     if len(data) <= 0:
-        rs.showError('No se encontro informacion sobre ese activo')
+        cf.rs.showError('No se encontro informacion sobre ese activo')
         cf.clear_screen()
     else:
         for key in data.keys():
@@ -91,14 +92,18 @@ def modifyActivo(data, srcData):
                 if(key != 'Asignado_A'): ##AQUI LE PUSE EL CONDICIONAL PARA QUE ESTO NO SE PUEDA MODIFICAR, POR QUE SI NO VALEMOS MONDA
                     if(key != 'estado'): ##AQUI LE PUSE EL CONDICIONAL PARA QUE ESTO NO SE PUEDA MODIFICAR, POR QUE SI NO VALEMOS MONDA
                         if (key!='historial'):## creo que es mejor que esto no se modifique   
-                            if bool(rs.yesORnot(f'Desea modificar el {key}')):
+                            if bool(cf.rs.yesORnot(f'Desea modificar el {key}')):
                                 if (key=='precio'): ## puse esto por si modifican el precio solo puedan meter un float
                                     cf.clear_screen()
                                     data[key] = cf.rs.checkInput('float','Ingrese el nuevo precio del activo')
+                                elif key == 'numero_formulario':
+                                    cf.clear_screen()
+                                    data[key] = cf.rs.checkInput('int','Ingrese el nuevo numero de formulario')
                                 else:
                                     cf.clear_screen()
                                     data[key] = input(f'Ingrese el nuevo valor para {key}: ')
+                                    
             srcData['activos'][data['codigo']].update(data)
         cf.UpdateFile('inventario.json', srcData)
-        rs.showSuccess('Informacion modificada correctamente')
+        cf.rs.showSuccess('Informacion modificada correctamente')
         cf.clear_screen()

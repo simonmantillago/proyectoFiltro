@@ -57,12 +57,12 @@ def searchZona(data):
         if valor in data['zonas']: ### lo puse por si no existia el codigo
             result= data['zonas'].get(valor)
             nroZona,nombreZona,totalCapacidad,capacidad,activos = result.values()
-            displayList = [['Numero de zona',nroZona],['Nombre zona',nombreZona],['Capacidad total',totalCapacidad],['Capacidad',capacidad],['Activos zona',activos]]
+            displayList = [['Numero de zona',nroZona],['Nombre zona',nombreZona],['Capacidad total',totalCapacidad],['Activos en zona',capacidad],['Activos zona',activos]]
             print(tabulate(displayList,tablefmt="fancy_grid"))
             cf.pause_screen()
             cf.clear_screen()
         else:
-            rs.showError(f'el codigo {valor} no corresponde a ninguna zona registrada')
+            rs.showError(f'El codigo {valor} no corresponde a ninguna zona registrada')
             cf.clear_screen()
     else: 
         rs.showError('No hay zonas registradas')

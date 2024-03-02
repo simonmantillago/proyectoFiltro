@@ -55,12 +55,12 @@ def addAsignation(inventario,tipo_mov,encargado):
                             add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov) ## asigna, cambia estados e ingresa info al json
                             
                         else:
-                            cf.rs.showError('esta zona ya cuenta con la maxima capacidad de activos')
+                            cf.rs.showError('Esta zona ya cuenta con la maxima capacidad de activos')
                             break
                     else:
                         add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov)# asigna, cambia estados e ingresa info al json
                 else:
-                    cf.rs.showError(f'el producto se encuentra {inventario["activos"][codigo]["estado"]}')
+                    cf.rs.showError(f'El producto se encuentra {inventario["activos"][codigo]["estado"]}')
         else:
                 cf.rs.showError('El ID no corresponde a ningun activo registrado')
         isActivo=cf.rs.yesORnot('Desea agregar otro activo a la asignación')

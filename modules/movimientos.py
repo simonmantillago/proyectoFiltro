@@ -46,6 +46,7 @@ def modificar_data(inventario,estado,tipo_mov,encargado,codigo):
     cf.addData('inventario.json',inventario)
     if tipo_mov!='Retorno':
         cf.rs.showSuccess('El movimiento se realizó con exito')
+        cf.clear_screen()
 
 
 
@@ -148,7 +149,7 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
         'nro_historial':nro_historial,
         'encargado':encargado,
         'fecha':fecha,
-        'tipo_mov':'Re asignación'
+        'tipo_mov':'Re asignacion'
     }
     inventario['activos'][codigo]['historial'].update({nro_historial:historial})
 

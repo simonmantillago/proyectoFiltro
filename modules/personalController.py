@@ -92,7 +92,7 @@ def modifyPersonal(data, srcData):
                         for key2 in data[key].keys():
                             if bool(rs.yesORnot(f'Desea modificar el {key2}')):
                                 cf.clear_screen()
-                                data[key][key2] = cf.checkFile('int',f'Ingrese el nuevo valor para {key2}: ') ## aqui le puse checkfiles por si lo quieren modificar que sea solo numero
+                                data[key][key2] = cf.rs.checkInput('int',f'Ingrese el nuevo valor para {key2}: ') ## aqui le puse checkfiles por si lo quieren modificar que sea solo numero
                     else:
                         if bool(rs.yesORnot(f'Desea modificar el {key}')):
                             cf.clear_screen()
