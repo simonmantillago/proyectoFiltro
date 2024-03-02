@@ -4,7 +4,7 @@ from tabulate import tabulate
 
 
 
-def addAsignation(inventario,tipo,encargado):
+def addAsignation(inventario,tipo_mov,encargado):
     #constantes
     activos=[]
     fecha=str(datetime.now().date())
@@ -52,13 +52,13 @@ def addAsignation(inventario,tipo,encargado):
                     if tipo=='zonas':  ## evalua en la zona si tiene capacidad para realizar la asignacion
                         if inventario[tipo][id]['cantidad_activos']<inventario[tipo][id]['total_capacidad']:
                             inventario[tipo][id]['cantidad_activos']+=1
-                            add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado) ## asigna, cambia estados e ingresa info al json
+                            add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov) ## asigna, cambia estados e ingresa info al json
                             
                         else:
                             cf.rs.showError('esta zona ya cuenta con la maxima capacidad de activos')
                             break
                     else:
-                        add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado)# asigna, cambia estados e ingresa info al json
+                        add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov)# asigna, cambia estados e ingresa info al json
                 else:
                     cf.rs.showError(f'el producto se encuentra {inventario["activos"][codigo]["estado"]}')
         else:
@@ -92,7 +92,7 @@ def addAsignation(inventario,tipo,encargado):
     cf.clear_screen()
     cf.addData('inventario.json',inventario)
 
-def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
+def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov):
     
     activos.append(codigo)
     inventario['activos'][codigo]['Asignado_A']=id
@@ -103,7 +103,7 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
         'nro_historial':nro_historial,
         'encargado':encargado,
         'fecha':fecha,
-        'tipo_mov':tipo
+        'tipo_mov':tipo_mov
     }
     inventario['activos'][codigo]['historial'].update({nro_historial:historial})
 

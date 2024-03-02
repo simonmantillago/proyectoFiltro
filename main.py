@@ -8,8 +8,6 @@ inventario ={
     'asignaciones' :{}
 }
 
-
-
 def main():  
     cf.checkFile('inventario.json',inventario)
     main_menu()
