@@ -6,6 +6,7 @@ import modules.activosController as ac
 import modules.personalController as pc
 import modules.zonasController as zc
 import modules.movimientos as m
+import modules.reportsController as rc
 
 from tabulate import tabulate
 import sys
@@ -14,7 +15,7 @@ def main_menu():
     inventario = cf.readDataFile("inventario.json")
     global data_inventario 
     data_inventario = inventario
-    ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
+    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
     def wrapper(func,*params):
         cf.clear_screen()
@@ -125,7 +126,7 @@ def zonas_menu():
 
     title = """
     +++++++++++++
-    +   Zonas   +
+    +   ZONAS   +
     +++++++++++++
     """
     print(title)
@@ -196,20 +197,21 @@ def reports_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(rc.listarActivos,data_inventario)
     elif op == "2":
-        pass
+        wrapper(rc.listActivosCategoria, data_inventario)
     elif op == "3":
-        pass
+        wrapper(rc.listarActivosDaño, data_inventario)
     elif op == "4":
-        pass
+        wrapper(rc.listarActivosAsignacion, data_inventario)
     elif op == "5":
-        pass
+        wrapper(rc.listarHistorial,data_inventario)
     elif op == "6":
         wrapper(main_menu)
     else:
         cf.clear_screen()
         reports_menu()
+
 
 def movimientos_menu():
     def wrapper(func,*params):
