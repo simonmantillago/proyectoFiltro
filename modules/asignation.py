@@ -25,6 +25,10 @@ def addAsignation(inventario,tipo,encargado):
                 isTipo=False
             else:
                 cf.rs.showError('El ID no corresponde a ninguna persona registrada')
+                ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if ispersona==True:
+                    return
+
 
         elif op==2:
             tipo='zonas' ## evalua en zonas si existe o no
@@ -35,6 +39,9 @@ def addAsignation(inventario,tipo,encargado):
                 isTipo=False
             else:
                 cf.rs.showError('El ID no corresponde a ninguna Zona registrada')
+                ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if ispersona==True:
+                    return
 
     isActivo=True
     while isActivo:
@@ -58,8 +65,10 @@ def addAsignation(inventario,tipo,encargado):
                 cf.rs.showError('El id no corresponde a ningun activo registrado')
         isActivo=cf.rs.yesORnot('Desea agregar otro activo a la asignación')
         if activos==[]: ## si se quieren salir de la asignación 
-            isActivo=not(cf.rs.yesORnot('Desea salir de asignaciones'))
-            cf.clear_screen()
+            isworking=not(cf.rs.yesORnot('Desea salir de asignaciones'))
+            if isworking==True:
+                return
+                cf.clear_screen()
         
     if tipo=='zonas':
         numero=id

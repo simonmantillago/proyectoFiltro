@@ -72,7 +72,7 @@ def activos_menu():
         wrapper(ac.addActivo,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese el codigo del activo a modificar -> ')
+        mod = input('Ingrese el codigo del activo a modificar -> ').upper() ## arregle este.upper
         wrapper(ac.modifyActivo,data_inventario.get('activos').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'activos',data_inventario)
@@ -105,7 +105,7 @@ def personal_menu():
         wrapper(pc.addPersonal,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese la identificacion de la persona a modificar -> ')
+        mod = input('Ingrese la identificacion de la persona a modificar -> ').upper() ## le puse el .upper()
         wrapper(pc.modifyPersonal,data_inventario.get('personas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'personas',data_inventario)
@@ -137,7 +137,7 @@ def zonas_menu():
     if op == "1":
         wrapper(zc.addZona,data_inventario)
     elif op == "2":
-        mod = input('Ingrese el codigo de la zona a modificar -> ')
+        mod = input('Ingrese el codigo de la zona a modificar -> ').upper() ## puse el .upper()
         wrapper(zc.modifyZona,data_inventario.get('zonas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'zonas',data_inventario)

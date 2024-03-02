@@ -18,7 +18,7 @@ def addPersonal(inventario):
         if len(zonasData):
             for valor in zonasData.values():
                 if (valor["nroZona"] == id):
-                    rs.showError("Ese id o nit ya se encuentra registrado")
+                    rs.showError("Ese id ya se encuentra registrado en zonas")
                     addPersonal(inventario)
                     return
                 
@@ -64,14 +64,17 @@ def addPersonal(inventario):
 
 def searchPersonal(data):
     if len(data['personas']):
-        valor = input("Ingrese el id de la persona a buscar -> ")
-        result= data['personas'].get(valor)
-        id,nombre,email,telefonos,activos = result.values()
-        movil,casa,personal,oficina = telefonos.values()
-        displayList = [['Id',id],['Nombre',nombre],['Email',email],['Celular',movil],['Fijo',casa],['Nro Personal',personal],['Nro ofincina',oficina],['Activos asignados',activos]]
-        print(tabulate(displayList,tablefmt="fancy_grid"))
-        cf.pause_screen()
-        cf.clear_screen()
+        valor = input("Ingrese el id de la persona a buscar -> ").upper() ##puse el .upper()
+        if valor in data['personas']:
+            result= data['personas'].get(valor)
+            id,nombre,email,telefonos,activos = result.values()
+            movil,casa,personal,oficina = telefonos.values()
+            displayList = [['Id',id],['Nombre',nombre],['Email',email],['Celular',movil],['Fijo',casa],['Nro Personal',personal],['Nro ofincina',oficina],['Activos asignados',activos]]
+            print(tabulate(displayList,tablefmt="fancy_grid"))
+            cf.pause_screen()
+            cf.clear_screen()
+        else:
+            rs.showError(f'No hay activos registrados con el codigo {valor}') ## puse mensaje de error por si no lo encontraba
     else: 
         rs.showError('No hay personal registrado')
         cf.clear_screen()
@@ -89,7 +92,7 @@ def modifyPersonal(data, srcData):
                         for key2 in data[key].keys():
                             if bool(rs.yesORnot(f'Desea modificar el {key2}')):
                                 cf.clear_screen()
-                                data[key][key2] = input(f'Ingrese el nuevo valor para {key2}: ')
+                                data[key][key2] = cf.checkFile('int',f'Ingrese el nuevo valor para {key2}: ') ## aqui le puse checkfiles por si lo quieren modificar que sea solo numero
                     else:
                         if bool(rs.yesORnot(f'Desea modificar el {key}')):
                             cf.clear_screen()

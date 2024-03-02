@@ -19,7 +19,7 @@ def addZona(inventario):
         if len(personalData):
             for value in personalData.values():
                 if (value["id"] == nroZona):
-                    rs.showError("Ese id o nit ya se encuentra registrado")
+                    rs.showError("Ese id o nit ya se encuentra registrado en personal")
                     addZona(inventario)
                     return
                 
@@ -53,7 +53,7 @@ def addZona(inventario):
     
 def searchZona(data):
     if len(data['zonas']):
-        valor = input("Ingrese el codigo de la zona a buscar -> ")
+        valor = input("Ingrese el codigo de la zona a buscar -> ").upper()##puse el upper
         result= data['zonas'].get(valor)
         nroZona,nombreZona,totalCapacidad,capacidad,activos = result.values()
         displayList = [['Numero de zona',nroZona],['Nombre zona',nombreZona],['Capacidad total',totalCapacidad],['Capacidad',capacidad],['Activos zona',activos]]
@@ -71,10 +71,14 @@ def modifyZona(data, srcData):
         for key in data.keys():
             if(key != 'nroZona'):
                 if key != 'activos_asignados':
-                    if(key != 'capacidad'):
+                    if(key != 'cantidad_activos'):
                         if bool(rs.yesORnot(f'Desea modificar el {key}')):
-                            cf.clear_screen()
-                            data[key] = input(f'Ingrese el nuevo valor para {key}: ')
+                            if key=='total_capacidad':## le agregue esto por que si queremos que se modifique la capacidad
+                                cf.clear_screen()### pero debe ser un int y antes se podia pero cualquier dato
+                                data[key] = cf.rs.checkInput('int','Ingrese el nuevo valor para la nueva capacidad de la zona: ')
+                            else:
+                                cf.clear_screen()
+                                data[key] = input(f'Ingrese el nuevo valor para {key}: ')
             srcData['zonas'][data['nroZona']].update(data)
         cf.UpdateFile('inventario.json', srcData)
         rs.showSuccess('Informacion modificada correctamente')

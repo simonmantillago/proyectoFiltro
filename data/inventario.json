@@ -7873,7 +7873,54 @@
             "Asignado_A": "N/A"
         }
     },
-    "personas": {},
-    "zonas": {},
+    "personas": {
+        "A2": {
+            "id": "A2",
+            "nombre": "d",
+            "email": "d",
+            "telefono": {
+                "movil": 1,
+                "casa": "No tiene",
+                "personal": "No tiene",
+                "oficina": "No tiene"
+            },
+            "activos_asignados": []
+        },
+        "A3": {
+            "id": "A3",
+            "nombre": "a",
+            "email": "a",
+            "telefono": {
+                "movil": 1,
+                "casa": "No tiene",
+                "personal": "No tiene",
+                "oficina": "No tiene"
+            },
+            "activos_asignados": []
+        }
+    },
+    "zonas": {
+        "A1": {
+            "nroZona": "A1",
+            "nombreZona": "aa",
+            "total_capacidad": 2,
+            "cantidad_activos": 0,
+            "activos_asignados": []
+        },
+        "A4": {
+            "nroZona": "A4",
+            "nombreZona": "sd",
+            "total_capacidad": 3,
+            "cantidad_activos": 0,
+            "activos_asignados": []
+        },
+        "B1": {
+            "nroZona": "B1",
+            "nombreZona": "as",
+            "total_capacidad": "as",
+            "cantidad_activos": 0,
+            "activos_asignados": []
+        }
+    },
     "asignaciones": {}
 }
