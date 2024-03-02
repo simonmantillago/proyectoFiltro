@@ -54,12 +54,16 @@ def addZona(inventario):
 def searchZona(data):
     if len(data['zonas']):
         valor = input("Ingrese el codigo de la zona a buscar -> ").upper()##puse el upper
-        result= data['zonas'].get(valor)
-        nroZona,nombreZona,totalCapacidad,capacidad,activos = result.values()
-        displayList = [['Numero de zona',nroZona],['Nombre zona',nombreZona],['Capacidad total',totalCapacidad],['Capacidad',capacidad],['Activos zona',activos]]
-        print(tabulate(displayList,tablefmt="fancy_grid"))
-        cf.pause_screen()
-        cf.clear_screen()
+        if valor in data['zonas']: ### lo puse por si no existia el codigo
+            result= data['zonas'].get(valor)
+            nroZona,nombreZona,totalCapacidad,capacidad,activos = result.values()
+            displayList = [['Numero de zona',nroZona],['Nombre zona',nombreZona],['Capacidad total',totalCapacidad],['Capacidad',capacidad],['Activos zona',activos]]
+            print(tabulate(displayList,tablefmt="fancy_grid"))
+            cf.pause_screen()
+            cf.clear_screen()
+        else:
+            rs.showError(f'el codigo {valor} no corresponde a ninguna zona registrada')
+            cf.clear_screen()
     else: 
         rs.showError('No hay zonas registradas')
         cf.clear_screen()
@@ -74,7 +78,7 @@ def modifyZona(data, srcData):
                     if(key != 'cantidad_activos'):
                         if bool(rs.yesORnot(f'Desea modificar el {key}')):
                             if key=='total_capacidad':## le agregue esto por que si queremos que se modifique la capacidad
-                                cf.clear_screen()### pero debe ser un int y antes se podia pero cualquier dato
+                                cf.clear_screen()### y debe ser un int
                                 data[key] = cf.rs.checkInput('int','Ingrese el nuevo valor para la nueva capacidad de la zona: ')
                             else:
                                 cf.clear_screen()
