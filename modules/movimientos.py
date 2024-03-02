@@ -1,11 +1,10 @@
 import modules.coreFiles as cf
 import modules.asignation as a
 from datetime import datetime
-def mov(inventario,estado,tipo_mov):
+def mov(inventario,estado,tipo_mov,encargado):
     codigo=cf.rs.checkInput('str','Ingrese el codigo del activo').upper()
     if codigo in inventario['activos']:
         fecha=str(datetime.now().date())
-        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
         nro_historial=str(len(inventario['activos'][codigo]['historial'])+1).zfill(3)
         id=inventario['activos'][codigo]['Asignado_A']
         inventario['activos'][codigo]['Asignado_A']=''
@@ -28,7 +27,7 @@ def mov(inventario,estado,tipo_mov):
     else:
         cf.rs.showError('El codigo no existe')
 
-def cam(inventario):
+def cam(inventario,encargado):
     mov(inventario,'No asignado','Retorno')
-    a.addAsignation(inventario,'Re-asignacion')
+    a.addAsignation(inventario,'Re-asignacion',encargado)
 

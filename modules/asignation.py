@@ -4,11 +4,11 @@ from tabulate import tabulate
 
 
 
-def addAsignation(inventario,tipo):
+def addAsignation(inventario,tipo,encargado):
     #constantes
     activos=[]
     fecha=str(datetime.now().date())
-    encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado de las asignaciones')
+    
     cf.clear_screen()
 
     isTipo=True
@@ -60,28 +60,28 @@ def addAsignation(inventario,tipo):
         if activos==[]: ## si se quieren salir de la asignación 
             isActivo=not(cf.rs.yesORnot('Desea salir de asignaciones'))
             cf.clear_screen()
-        else:
-            if tipo=='zonas':
-                numero=id
-            if tipo =='personas':
-                numero=id
-            Asignation={
+        
+    if tipo=='zonas':
+        numero=id
+    if tipo =='personas':
+        numero=id
+    Asignation={
 
-            'Numero':numero,
-            'Fecha':fecha,
-            'Tipo':tipo,
-            'AsignadoA':id,
-            'Activos':activos
-            }
-            if numero not in inventario['asignaciones']:
-                inventario['asignaciones'].update({numero:Asignation})
-            else:
-                for item in activos:
-                    inventario['asignaciones'][numero]['Activos'].append(item)
+    'Numero':numero,
+    'Fecha':fecha,
+    'Tipo':tipo,
+    'AsignadoA':id,
+    'Activos':activos
+    }
+    if numero not in inventario['asignaciones']:
+        inventario['asignaciones'].update({numero:Asignation})
+    else:
+        for item in activos:
+            inventario['asignaciones'][numero]['Activos'].append(item)
 
-            cf.rs.showSuccess(f'El activo {codigo} ya fue asignado')
-            cf.clear_screen()
-            cf.addData('inventario.json',inventario)
+    cf.rs.showSuccess(f'El activo {codigo} ya fue asignado')
+    cf.clear_screen()
+    cf.addData('inventario.json',inventario)
 
 def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
     

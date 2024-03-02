@@ -167,7 +167,8 @@ def asignaciones_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(a.addAsignation,data_inventario,'Asignacion')
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado de las asignaciones')
+        wrapper(a.addAsignation,data_inventario,'Asignacion',encargado)
     elif op == "2":
         wrapper(a.search_Asignation,data_inventario)
     elif op == "3":
@@ -228,13 +229,17 @@ def movimientos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(m.mov,data_inventario,'No asignado','Retorno')
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'No asignado','Retorno',encargado)
     elif op == "2":
-        wrapper(m.mov,data_inventario,'Dado de baja','Dar de Baja')
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'Dado de baja','Dar de Baja',encargado)
     elif op == "3":
-        wrapper(m.cam,data_inventario)
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.cam,data_inventario,encargado)
     elif op == "4":
-        wrapper(m.movimiento,data_inventario,'Garantia','Garantia')
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.movimiento,data_inventario,'Garantia','Garantia',encargado)
     elif op == "5":
         wrapper(main_menu)
     else:

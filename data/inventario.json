@@ -6409,16 +6409,22 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "Asignado",
+            "estado": "No asignado",
             "historial": {
                 "001": {
                     "nro_historial": "001",
                     "encargado": "sdf",
                     "fecha": "2024-03-01",
                     "tipo_mov": "zonas"
+                },
+                "002": {
+                    "nro_historial": "002",
+                    "encargado": "asd",
+                    "fecha": "2024-03-01",
+                    "tipo_mov": "Retorno"
                 }
             },
-            "Asignado_A": "222"
+            "Asignado_A": ""
         },
         "MO101": {
             "codigo_transaccion": "327",
@@ -7312,9 +7318,16 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "No asignado",
-            "historial": {},
-            "Asignado_A": "N/A"
+            "estado": "Asignado",
+            "historial": {
+                "001": {
+                    "nro_historial": "001",
+                    "encargado": "sd",
+                    "fecha": "2024-03-01",
+                    "tipo_mov": "zonas"
+                }
+            },
+            "Asignado_A": "222"
         },
         "MO115": {
             "codigo_transaccion": "327",
@@ -7908,7 +7921,7 @@
             "proveedor": "Compumax Computer ",
             "empresa_responsable": "Campuslands",
             "precio": "150000",
-            "estado": "No asignado",
+            "estado": "Asignado",
             "historial": {
                 "001": {
                     "nro_historial": "001",
@@ -7921,9 +7934,15 @@
                     "encargado": "asd",
                     "fecha": "2024-03-01",
                     "tipo_mov": "Retorno"
+                },
+                "003": {
+                    "nro_historial": "003",
+                    "encargado": "sd",
+                    "fecha": "2024-03-01",
+                    "tipo_mov": "zonas"
                 }
             },
-            "Asignado_A": ""
+            "Asignado_A": "222"
         }
     },
     "personas": {
@@ -7945,10 +7964,11 @@
             "nroZona": "222",
             "nombreZona": "aaa",
             "total_capacidad": 3,
-            "cantidad_activos": 2,
+            "cantidad_activos": 3,
             "activos_asignados": [
                 "TE122",
-                "TE101"
+                "TE124",
+                "TE115"
             ]
         }
     },
@@ -7968,7 +7988,8 @@
             "Activos": [
                 "TE122",
                 "TE100",
-                "TE101"
+                "TE124",
+                "TE115"
             ]
         }
     }
