@@ -8,11 +8,12 @@ inventario ={
     'asignaciones' :{}
 }
 
-
-
 def main():  
     cf.checkFile('inventario.json',inventario)
     main_menu()
 
 if __name__ == '__main__':
     main()
+
+
+    

@@ -5,6 +5,7 @@ import modules.asignation as a
 import modules.activosController as ac
 import modules.personalController as pc
 import modules.zonasController as zc
+import modules.movimientos as m
 
 from tabulate import tabulate
 import sys
@@ -13,7 +14,7 @@ def main_menu():
     inventario = cf.readDataFile("inventario.json")
     global data_inventario 
     data_inventario = inventario
-    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
+    #ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
     def wrapper(func,*params):
         cf.clear_screen()
@@ -71,7 +72,7 @@ def activos_menu():
         wrapper(ac.addActivo,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese el codigo del activo a modificar -> ')
+        mod = input('Ingrese el codigo del activo a modificar -> ').upper() ## arregle este.upper
         wrapper(ac.modifyActivo,data_inventario.get('activos').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'activos',data_inventario)
@@ -104,7 +105,7 @@ def personal_menu():
         wrapper(pc.addPersonal,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese la identificacion de la persona a modificar -> ')
+        mod = input('Ingrese la identificacion de la persona a modificar -> ').upper() ## le puse el .upper()
         wrapper(pc.modifyPersonal,data_inventario.get('personas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'personas',data_inventario)
@@ -136,7 +137,7 @@ def zonas_menu():
     if op == "1":
         wrapper(zc.addZona,data_inventario)
     elif op == "2":
-        mod = input('Ingrese el codigo de la zona a modificar -> ')
+        mod = input('Ingrese el codigo de la zona a modificar -> ').upper() ## puse el .upper()
         wrapper(zc.modifyZona,data_inventario.get('zonas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'zonas',data_inventario)
@@ -166,9 +167,10 @@ def asignaciones_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(a.addAsignation,data_inventario)
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado de las asignaciones')
+        wrapper(a.addAsignation,data_inventario,'Asignacion',encargado)
     elif op == "2":
-        wrapper(a.search_Asignation)
+        wrapper(a.search_Asignation,data_inventario)
     elif op == "3":
         wrapper(main_menu)
     else:
@@ -227,13 +229,17 @@ def movimientos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'No asignado','Retorno',encargado)
     elif op == "2":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'Dado de baja','Dar de Baja',encargado)
     elif op == "3":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.cam,data_inventario,encargado)
     elif op == "4":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'Garantia','Garantia',encargado)
     elif op == "5":
         wrapper(main_menu)
     else:
