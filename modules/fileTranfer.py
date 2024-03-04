@@ -12,7 +12,7 @@ def convertExel(data_inventario):
         producto={
         
         'codigo_transaccion':item[0],
-        'numero_formulario':item[1],
+        'numero_formulario':int(item[1]),
         'codigo':item[2],
         'numero_serial':item[3],
         'marca':item[4],
@@ -21,7 +21,7 @@ def convertExel(data_inventario):
         'nombre':item[7],
         'proveedor':item[8],
         'empresa_responsable':item[9],
-        'precio':item[10],
+        'precio':float(item[10]),
         'estado':'No asignado',
         'historial':{},
         'Asignado_A':'N/A'

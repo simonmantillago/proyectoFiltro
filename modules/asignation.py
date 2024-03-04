@@ -4,12 +4,11 @@ from tabulate import tabulate
 
 
 
-def addAsignation(inventario):
+def addAsignation(inventario,tipo_mov,encargado):
     #constantes
     activos=[]
-    numero=str(len(inventario['asignaciones'])+1).zfill(4)
     fecha=str(datetime.now().date())
-    encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado de las asignaciones')
+    
     cf.clear_screen()
 
     isTipo=True
@@ -19,65 +18,81 @@ def addAsignation(inventario):
         cf.clear_screen()
         if op==1:
             tipo='personas'## evalua en personas si existe o no
-            id_persona=cf.rs.checkInput('str','Ingrese el ID de la Persona a la cual se le asignara el o los activos')
+            id_persona=cf.rs.checkInput('str','Ingrese el ID de la Persona a la cual se le asignara el o los activos').upper()
             cf.clear_screen()
             if id_persona in inventario['personas']:
                 id=id_persona
                 isTipo=False
             else:
                 cf.rs.showError('El ID no corresponde a ninguna persona registrada')
+                ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if ispersona==True:
+                    return
+
 
         elif op==2:
             tipo='zonas' ## evalua en zonas si existe o no
-            id_zona=cf.rs.checkInput('str','Ingrese el ID de la Zona a la cual se le asignara el o los activos')
+            id_zona=cf.rs.checkInput('str','Ingrese el ID de la Zona a la cual se le asignara el o los activos').upper()
             cf.clear_screen()
             if id_zona  in inventario['zonas']:
                 id=id_zona
                 isTipo=False
             else:
                 cf.rs.showError('El ID no corresponde a ninguna Zona registrada')
+                ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if ispersona==True:
+                    return
 
     isActivo=True
     while isActivo:
-        codigo=cf.rs.checkInput('srt','ingrese el codigo del producto a asignar').upper()
+        codigo=cf.rs.checkInput('srt','Ingrese el codigo del producto a asignar').upper()
         cf.clear_screen()
         if (codigo in inventario['activos']) and (codigo not in activos): ## evalua si el codigo es valido
                 if (inventario['activos'][codigo]['estado']=='No asignado'): ## evalua que el activo no este asignado 
                     if tipo=='zonas':  ## evalua en la zona si tiene capacidad para realizar la asignacion
                         if inventario[tipo][id]['cantidad_activos']<inventario[tipo][id]['total_capacidad']:
                             inventario[tipo][id]['cantidad_activos']+=1
-                            add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado) ## asigna, cambia estados e ingresa info al json
+                            add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov) ## asigna, cambia estados e ingresa info al json
                             
                         else:
-                            cf.rs.showError('esta zona ya cuenta con la maxima capacidad de activos')
+                            cf.rs.showError('Esta zona ya cuenta con la maxima capacidad de activos')
                             break
                     else:
-                        add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado)# asigna, cambia estados e ingresa info al json
+                        add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov)# asigna, cambia estados e ingresa info al json
                 else:
-                    cf.rs.showError(f'el producto ya se encuenntra asignado a {inventario["activos"][codigo]["Asignado_A"]}')
+                    cf.rs.showError(f'El producto se encuentra {inventario["activos"][codigo]["estado"]}')
         else:
-                cf.rs.showError('El id no corresponde a ningun activo registrado')
+                cf.rs.showError('El ID no corresponde a ningun activo registrado')
         isActivo=cf.rs.yesORnot('Desea agregar otro activo a la asignación')
         if activos==[]: ## si se quieren salir de la asignación 
-            isActivo=cf.rs.yesORnot('Desea salir de asignaciones')
-            cf.clear_screen()
-            break
-        else:
-            Asignation={
+            isworking=(cf.rs.yesORnot('No ha ingresado ningun activo. Desea continuar en asignaciones'))
+            if isworking==False:
+                cf.clear_screen()
+                return
+        
+    if tipo=='zonas':
+        numero=id
+    if tipo =='personas':
+        numero=id
+    Asignation={
 
-            'Numero':numero,
-            'Fecha':fecha,
-            'Tipo':tipo,
-            'AsignadoA':id,
-            'Activos':activos
-            }
+    'Numero':numero,
+    'Fecha':fecha,
+    'Tipo':tipo,
+    'AsignadoA':id,
+    'Activos':activos
+    }
+    if numero not in inventario['asignaciones']:
+        inventario['asignaciones'].update({numero:Asignation})
+    else:
+        for item in activos:
+            inventario['asignaciones'][numero]['Activos'].append(item)
 
-            inventario['asignaciones'].update({numero:Asignation})
-            cf.rs.showSuccess(f'El activo {codigo} ya fue asignado')
-            cf.clear_screen()
-            cf.addData('inventario.json',inventario)
+    cf.rs.showSuccess(f'Asignación realizada con exito')
+    cf.clear_screen()
+    cf.addData('inventario.json',inventario)
 
-def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
+def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov):
     
     activos.append(codigo)
     inventario['activos'][codigo]['Asignado_A']=id
@@ -88,14 +103,17 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado):
         'nro_historial':nro_historial,
         'encargado':encargado,
         'fecha':fecha,
-        'tipo_mov':'Asignacion'
+        'tipo_mov':tipo_mov
     }
     inventario['activos'][codigo]['historial'].update({nro_historial:historial})
 
 
-def search_Asignation():
-    inventario=cf.readDataFile('inventario.json')
-    nro_asignation=cf.rs.checkInput('str','Ingrese el numero de la asignacion a buscar')
+#######################################################################################################################################
+#######################################################################################################################################
+# SEARCH
+    
+def search_Asignation(inventario):
+    nro_asignation=cf.rs.checkInput('str','Ingrese el numero de la asignacion a buscar').upper()
     if nro_asignation in inventario['asignaciones']:
         numero,fecha,tipo,AsignadoA,activos=inventario['asignaciones'][nro_asignation].values()
         Asignacion=[['Nro Asignacion',numero],['Fecha de Asignacion',fecha],['Tipo de Asignacion',tipo],['Asignado A',AsignadoA],['Activos Asignados',activos]]

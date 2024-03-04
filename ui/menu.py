@@ -5,6 +5,8 @@ import modules.asignation as a
 import modules.activosController as ac
 import modules.personalController as pc
 import modules.zonasController as zc
+import modules.movimientos as m
+import modules.reportsController as rc
 
 from tabulate import tabulate
 import sys
@@ -13,7 +15,7 @@ def main_menu():
     inventario = cf.readDataFile("inventario.json")
     global data_inventario 
     data_inventario = inventario
-    # ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
+    ft.convertExel(data_inventario) #Funcion para subir datos de excel a json
     
     def wrapper(func,*params):
         cf.clear_screen()
@@ -22,10 +24,10 @@ def main_menu():
     
     cf.clear_screen()
     title = """
-    +++++++++++++++++++++++++++++
-    + SISTEMA G&C DE INVENTARIO +
-    +        CAMPUSLANDS        +
-    +++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++
++  SISTEMA G&C DE INVENTARIO  +
++     🚀 CAMPUSLANDS 🚀       +
++++++++++++++++++++++++++++++++
     """
     print(title)
     menu =[["1.", "Activos"], ["2.", "Personal"], ["3.", "Zonas"], ["4.", "Asignacion de activos"], ["5.", "Reportes"],["6.", "Movimientos de activos"],["7.", "Salir"]]
@@ -57,9 +59,9 @@ def activos_menu():
         activos_menu()
 
     title = """
-    +++++++++++++++
-    +   ACTIVOS   +
-    +++++++++++++++
+++++++++++++++++
++  ACTIVOS 💻  +
+++++++++++++++++
     """
     print(title)
     menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
@@ -71,7 +73,7 @@ def activos_menu():
         wrapper(ac.addActivo,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese el codigo del activo a modificar -> ')
+        mod = input('Ingrese el codigo del activo a modificar -> ').upper() ## arregle este.upper
         wrapper(ac.modifyActivo,data_inventario.get('activos').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'activos',data_inventario)
@@ -90,9 +92,9 @@ def personal_menu():
         personal_menu()
         
     title = """
-    +++++++++++++++
-    +   PERSONAL  +
-    +++++++++++++++
+++++++++++++++++
++  PERSONAL🚶 +
+++++++++++++++++
     """
     print(title)
     menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
@@ -104,7 +106,7 @@ def personal_menu():
         wrapper(pc.addPersonal,data_inventario)
     elif op == "2":
         cf.clear_screen()
-        mod = input('Ingrese la identificacion de la persona a modificar -> ')
+        mod = input('Ingrese la identificacion de la persona a modificar -> ').upper() ## le puse el .upper()
         wrapper(pc.modifyPersonal,data_inventario.get('personas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'personas',data_inventario)
@@ -123,9 +125,9 @@ def zonas_menu():
         zonas_menu()
 
     title = """
-    +++++++++++++
-    +   Zonas   +
-    +++++++++++++
+++++++++++++++++
++   ZONAS 🎒   +
+++++++++++++++++
     """
     print(title)
     menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
@@ -136,7 +138,7 @@ def zonas_menu():
     if op == "1":
         wrapper(zc.addZona,data_inventario)
     elif op == "2":
-        mod = input('Ingrese el codigo de la zona a modificar -> ')
+        mod = input('Ingrese el codigo de la zona a modificar -> ').upper() ## puse el .upper()
         wrapper(zc.modifyZona,data_inventario.get('zonas').get(mod,{}),data_inventario)
     elif op == "3":
         wrapper(cf.delData,'zonas',data_inventario)
@@ -155,9 +157,9 @@ def asignaciones_menu():
         asignaciones_menu()
 
     title = """
-    ++++++++++++++++++
-    +  ASIGNACIONES  +
-    ++++++++++++++++++
+++++++++++++++++++++++
++  ASIGNACIONES ✅  +
+++++++++++++++++++++++
     """
     print(title)
     menu = [["1.", "Crear"],["2.", "Buscar"],["3.", "Salir"]]
@@ -166,9 +168,10 @@ def asignaciones_menu():
     op = input("\n>> ")
 
     if op == "1":
-        wrapper(a.addAsignation,data_inventario)
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado de las asignaciones')
+        wrapper(a.addAsignation,data_inventario,'Asignacion',encargado)
     elif op == "2":
-        wrapper(a.search_Asignation)
+        wrapper(a.search_Asignation,data_inventario)
     elif op == "3":
         wrapper(main_menu)
     else:
@@ -183,9 +186,9 @@ def reports_menu():
         reports_menu()
 
     title = """
-    ++++++++++++++
-    +  REPORTES  +
-    ++++++++++++++
+               ++++++++++++++++++
+               +  REPORTES 📊  +
+               ++++++++++++++++++
     """
     print(title)
     menu = [["1.", "Listar todos los activos"],["2.", "Listar activos por categoria"],["3.", "Listar activos dados de baja"],["4.", "Listar activos y asignacion"],["5.", "Listar historial de movimiento de activo"],["6.", "Salir"]]
@@ -194,20 +197,21 @@ def reports_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        wrapper(rc.listarActivos,data_inventario)
     elif op == "2":
-        pass
+        wrapper(rc.listActivosCategoria, data_inventario)
     elif op == "3":
-        pass
+        wrapper(rc.listarActivosDaño, data_inventario)
     elif op == "4":
-        pass
+        wrapper(rc.listarActivosAsignacion, data_inventario)
     elif op == "5":
-        pass
+        wrapper(rc.listarHistorial,data_inventario)
     elif op == "6":
         wrapper(main_menu)
     else:
         cf.clear_screen()
         reports_menu()
+
 
 def movimientos_menu():
     def wrapper(func,*params):
@@ -216,9 +220,9 @@ def movimientos_menu():
         movimientos_menu()
 
     title = """
-    +++++++++++++++++
-    +  MOVIMIENTOS  +
-    +++++++++++++++++
+        +++++++++++++++++++++
+        +  MOVIMIENTOS 🔃   +
+        +++++++++++++++++++++
     """
     print(title)
     menu = [["1.", "Retorno activos"],["2.", "Dar de baja activo"],["3.", "Cambiar asignacion del activo"],["4.", "Enviar a garantia activo"],["5.", "Salir"]]
@@ -227,13 +231,17 @@ def movimientos_menu():
     op = input("\n>> ")
 
     if op == "1":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'No asignado','Retorno',encargado)
     elif op == "2":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'Dado de baja','Dar de Baja',encargado)
     elif op == "3":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.cam,data_inventario,encargado)
     elif op == "4":
-        pass
+        encargado=cf.rs.checkInput('str','Ingrese el nombre del encargado del movimiento')
+        wrapper(m.mov,data_inventario,'Garantia','Garantia',encargado)
     elif op == "5":
         wrapper(main_menu)
     else:
