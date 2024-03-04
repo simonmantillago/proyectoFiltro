@@ -21,8 +21,12 @@ def addActivo(inventario):
         # Verificar si el codigo ya existe en el inventario
         if codigo in activosData:
             cf.rs.showError("Error: El codigo del equipo ya existe en el inventario.")
-            cf.clear_screen() 
-            continue
+            cf.clear_screen()
+            iscodigo=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+            if iscodigo==True:
+                cf.clear_screen()
+                return
+            
         
         
         numero_serial = cf.rs.checkInput('str','Ingrese el numero serial').upper()

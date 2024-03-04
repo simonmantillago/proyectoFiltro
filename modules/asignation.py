@@ -27,6 +27,7 @@ def addAsignation(inventario,tipo_mov,encargado):
                 cf.rs.showError('El ID no corresponde a ninguna persona registrada')
                 ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
                 if ispersona==True:
+                    cf.clear_screen()
                     return
 
 
@@ -39,8 +40,9 @@ def addAsignation(inventario,tipo_mov,encargado):
                 isTipo=False
             else:
                 cf.rs.showError('El ID no corresponde a ninguna Zona registrada')
-                ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
-                if ispersona==True:
+                iszona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if iszona==True:
+                    cf.clear_screen()
                     return
 
     isActivo=True

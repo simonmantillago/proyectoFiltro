@@ -30,108 +30,49 @@ def listarActivos(data_inventario):
             cf.clear_screen()
 
 def listActivosCategoria(data_inventario):
-    while True:
         cf.clear_screen()
-        opcion = (""" 
-1. Listar categoria equipos de computo 
-2. Listar categoria juegos
-3. Listar categoria electrodomesticos
-4. Volver al menu de reportes
-                """)
-        print(opcion)
-        #EQUIPOS DE COMPUTO
-        op = input(":> ")
-        if op == "1":
-            listaEquipos = []
-            for codigo, activo in data_inventario["activos"].items():
-                if activo["categoria"] == "Equipo de computo":
-                    nombre = activo["nombre"]
-                    categoria = activo["categoria"]
-                    numero_serial = activo["numero_serial"]
-                    subLista = [codigo, nombre, categoria, numero_serial]
-                    listaEquipos.append(subLista)
-            if listaEquipos:
-                linesPorPage = 15
-                totalPag = (len(listaEquipos) - 1) // linesPorPage + 1
-                for idx in range(totalPag):
+        categoria_buscar = cf.rs.checkInput('str','Ingrese la categoria a buscar').upper()
+        
+        listaEquipos = []
+        for codigo, activo in data_inventario["activos"].items():
+            if activo["categoria"].upper()== categoria_buscar:
+                nombre = activo["nombre"]
+                categoria = activo["categoria"]
+                numero_serial = activo["numero_serial"]
+                subLista = [codigo, nombre, categoria, numero_serial]
+                listaEquipos.append(subLista)
+            else: 
+                cf.rs.showError(f'No hay ningun activo registrado en la categoria {categoria_buscar}')
+                iscategoria=(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if iscategoria==False:
                     cf.clear_screen()
-                    subset_data = listaEquipos[idx * linesPorPage: (idx + 1) * linesPorPage]
-                    print(tabulate(subset_data, headers=["CODIGO", "NOMBRE","CATEGORIA", "NUMERO SERIAL"], tablefmt="fancy_grid"))
-                    print(f'Pagina {idx + 1} de {totalPag}')
-                    cf.pause_screen()
-                    op = input('Si desea volver al menú, presione 0: ')
+                    cf.reports_menu()
+                    return
+                else:
+                    listActivosCategoria(data_inventario)
+
+        if listaEquipos:
+            linesPorPage = 15
+            totalPag = (len(listaEquipos) - 1) // linesPorPage + 1
+            for idx in range(totalPag):
+                cf.clear_screen()
+                subset_data = listaEquipos[idx * linesPorPage: (idx + 1) * linesPorPage]
+                print(tabulate(subset_data, headers=["CODIGO", "NOMBRE","CATEGORIA", "NUMERO SERIAL"], tablefmt="fancy_grid"))
+                print(f'Pagina {idx + 1} de {totalPag}')
+                cf.pause_screen()
+                op = input('Si desea volver al menú, presione 0: ')
+                cf.clear_screen()
+                if op == "0":
                     cf.clear_screen()
-                    if op == "0":
-                        cf.clear_screen()
-                        break  
-                    print(opcion)
+                    break  
+        
 
             else:
-                print(f"No hay activos en la categoría equipos de computo.")
+                print(f"No hay activos en la categoría {categoria_buscar}.")
                 cf.pause_screen()
                 cf.clear_screen()
 
-            #JUEGOS  
-        elif op == "2":
-            listaJuegos = []
-            for codigo, activo in data_inventario["activos"].items():
-
-                if activo["categoria"] == "Juegos":
-                    nombre = activo["nombre"]
-                    categoria = activo["categoria"]
-                    numero_serial = activo["numero_serial"]
-                    subLista = [codigo, nombre,categoria, numero_serial]
-                    listaJuegos.append(subLista)
-            if listaJuegos:
-                linesPorPage = 15
-                totalPag = (len(listaJuegos) - 1) // linesPorPage + 1
-                for idx in range(totalPag):
-                    cf.clear_screen()
-                    subset_data = listaJuegos[idx * linesPorPage: (idx + 1) * linesPorPage]
-                    print(tabulate(subset_data, headers=["CODIGO", "NOMBRE","CATEGORIA", "NUMERO SERIAL"], tablefmt="fancy_grid"))
-                    print(f'Pagina {idx + 1} de {totalPag}')
-                    cf.pause_screen()
-                    op = input('Si desea volver al menú, presione 0: ')
-                    if op == "0":
-                        cf.clear_screen()  
-                        break  
-                    print(opcion)
-            else:
-                print(f"No hay activos en la categoría juegos.")
-                cf.pause_screen()
-                cf.clear_screen()
-    #ELECTRODOMESTICOS
-        elif op == "3":
-            listaElectrodomesticos = []
-            for codigo, activo in data_inventario["activos"].items():
-
-                if activo["categoria"] == "Electrodomesticos":
-                    nombre = activo["nombre"]
-                    categoria = activo["categoria"]
-                    numero_serial = activo["numero_serial"]
-                    subLista = [codigo, nombre,categoria, numero_serial]
-                    listaElectrodomesticos.append(subLista)
-            if listaElectrodomesticos:
-                linesPorPage = 30
-                totalPag = (len(listaElectrodomesticos) - 1) // linesPorPage + 1
-                for idx in range(totalPag):
-                    cf.clear_screen()
-                    subset_data = listaElectrodomesticos[idx * linesPorPage: (idx + 1) * linesPorPage]
-                    print(tabulate(subset_data, headers=["CODIGO", "NOMBRE","CATEGORIA", "NUMERO SERIAL"], tablefmt="fancy_grid"))
-                    print(f'Pagina {idx + 1} de {totalPag}')
-                    cf.pause_screen()
-                    op = input('Si desea volver al menú, presione 0: ')
-                    if op == "0":
-                        cf.clear_screen()  
-                        break  
-                    print(opcion)
-            else:
-                print(f"No hay activos en la categoría electrodomesticos")
-                cf.pause_screen()
-                cf.clear_screen()
-        elif op == "4":
-                cf.clear_screen()  
-                cf.reports_menu()
+    
 #LISTAR ACTIVOS DADOS DE BAJA POR DAÑO 
 def listarActivosDaño(data_inventario):
     lista = []

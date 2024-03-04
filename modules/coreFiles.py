@@ -2,7 +2,7 @@ import sys
 import os
 import json
 import modules.reusable as rs
-from ui.menu import reports_menu
+from ui.menu import reports_menu,personal_menu,zonas_menu,reports_menu
 BASE="data/"
 
 def clear_screen():
