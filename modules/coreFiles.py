@@ -6,10 +6,10 @@ from ui.menu import reports_menu
 BASE="data/"
 
 def clear_screen():
-  if sys.platform == "linux" or sys.platform == "darwin":
-    os.system("clear")
-  else:
-    os.system("cls")
+    if sys.platform == "linux" or sys.platform == "darwin":
+        os.system("clear")
+    else:
+        os.system("cls")
 
 def pause_screen():
     if sys.platform == "linux" or sys.platform == "darwin":
