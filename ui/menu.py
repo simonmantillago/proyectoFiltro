@@ -24,10 +24,10 @@ def main_menu():
     
     cf.clear_screen()
     title = """
-    +++++++++++++++++++++++++++++
-    + SISTEMA G&C DE INVENTARIO +
-    +        CAMPUSLANDS        +
-    +++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++
++  SISTEMA G&C DE INVENTARIO  +
++     🚀 CAMPUSLANDS 🚀       +
++++++++++++++++++++++++++++++++
     """
     print(title)
     menu =[["1.", "Activos"], ["2.", "Personal"], ["3.", "Zonas"], ["4.", "Asignacion de activos"], ["5.", "Reportes"],["6.", "Movimientos de activos"],["7.", "Salir"]]
@@ -59,9 +59,9 @@ def activos_menu():
         activos_menu()
 
     title = """
-    +++++++++++++++
-    +   ACTIVOS   +
-    +++++++++++++++
+++++++++++++++++
++  ACTIVOS 💻  +
+++++++++++++++++
     """
     print(title)
     menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
@@ -92,9 +92,9 @@ def personal_menu():
         personal_menu()
         
     title = """
-    +++++++++++++++
-    +   PERSONAL  +
-    +++++++++++++++
+++++++++++++++++
++  PERSONAL🚶 +
+++++++++++++++++
     """
     print(title)
     menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
@@ -125,9 +125,9 @@ def zonas_menu():
         zonas_menu()
 
     title = """
-    +++++++++++++
-    +   ZONAS   +
-    +++++++++++++
+++++++++++++++++
++   ZONAS 🎒   +
+++++++++++++++++
     """
     print(title)
     menu = [["1.", "Agregar"],["2.", "Editar"],["3.", "Eliminar"],["4.", "Buscar"],["5.", "Salir"]]
@@ -157,9 +157,9 @@ def asignaciones_menu():
         asignaciones_menu()
 
     title = """
-    ++++++++++++++++++
-    +  ASIGNACIONES  +
-    ++++++++++++++++++
+++++++++++++++++++++++
++  ASIGNACIONES ✅  +
+++++++++++++++++++++++
     """
     print(title)
     menu = [["1.", "Crear"],["2.", "Buscar"],["3.", "Salir"]]
@@ -186,9 +186,9 @@ def reports_menu():
         reports_menu()
 
     title = """
-    ++++++++++++++
-    +  REPORTES  +
-    ++++++++++++++
+               ++++++++++++++++++
+               +  REPORTES 📊  +
+               ++++++++++++++++++
     """
     print(title)
     menu = [["1.", "Listar todos los activos"],["2.", "Listar activos por categoria"],["3.", "Listar activos dados de baja"],["4.", "Listar activos y asignacion"],["5.", "Listar historial de movimiento de activo"],["6.", "Salir"]]
@@ -220,9 +220,9 @@ def movimientos_menu():
         movimientos_menu()
 
     title = """
-    +++++++++++++++++
-    +  MOVIMIENTOS  +
-    +++++++++++++++++
+        +++++++++++++++++++++
+        +  MOVIMIENTOS 🔃   +
+        +++++++++++++++++++++
     """
     print(title)
     menu = [["1.", "Retorno activos"],["2.", "Dar de baja activo"],["3.", "Cambiar asignacion del activo"],["4.", "Enviar a garantia activo"],["5.", "Salir"]]

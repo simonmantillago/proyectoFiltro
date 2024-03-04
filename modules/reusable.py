@@ -6,8 +6,12 @@ def checkInput(type, message):
             data = input(f"{message} :> ")
             if(type == "int"):
                 data = int(data)
+                if data < 0 :
+                    raise ValueError
             elif(type == "float"):
                 data = float(data)
+                if data < 0 :
+                    raise ValueError
             elif(type == "str"):
                 data = data.lower()
         except ValueError:

@@ -45,7 +45,7 @@ def addAsignation(inventario,tipo_mov,encargado):
 
     isActivo=True
     while isActivo:
-        codigo=cf.rs.checkInput('srt','ingrese el codigo del producto a asignar').upper()
+        codigo=cf.rs.checkInput('srt','Ingrese el codigo del producto a asignar').upper()
         cf.clear_screen()
         if (codigo in inventario['activos']) and (codigo not in activos): ## evalua si el codigo es valido
                 if (inventario['activos'][codigo]['estado']=='No asignado'): ## evalua que el activo no este asignado 
