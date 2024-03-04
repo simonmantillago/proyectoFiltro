@@ -19,7 +19,7 @@ def addZona(inventario):
         if len(personalData):
             for value in personalData.values():
                 if (value["id"] == id):
-                    rs.showError("Ese id o nit ya se encuentra registrado")
+                    rs.showError("Ese numero de zona no es valido")
                     addZona(inventario)
                     return
                 
