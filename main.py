@@ -13,7 +13,15 @@ def main():
     main_menu()
 
 if __name__ == '__main__':
-    main()
+    while True:
+        try:
+            main()
+        except KeyboardInterrupt:
+            cf.rs.showError('Buen intento Jholver')
+            cf.clear_screen()
+        else:
+            main()
+            break
 
 
     
