@@ -27,6 +27,7 @@ def addAsignation(inventario,tipo_mov,encargado):
                 cf.rs.showError('El ID no corresponde a ninguna persona registrada')
                 ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
                 if ispersona==True:
+                    cf.clear_screen()
                     return
 
 
@@ -39,13 +40,14 @@ def addAsignation(inventario,tipo_mov,encargado):
                 isTipo=False
             else:
                 cf.rs.showError('El ID no corresponde a ninguna Zona registrada')
-                ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
-                if ispersona==True:
+                iszona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                if iszona==True:
+                    cf.clear_screen()
                     return
 
     isActivo=True
     while isActivo:
-        codigo=cf.rs.checkInput('srt','ingrese el codigo del producto a asignar').upper()
+        codigo=cf.rs.checkInput('srt','Ingrese el codigo del producto a asignar').upper()
         cf.clear_screen()
         if (codigo in inventario['activos']) and (codigo not in activos): ## evalua si el codigo es valido
                 if (inventario['activos'][codigo]['estado']=='No asignado'): ## evalua que el activo no este asignado 
@@ -65,8 +67,8 @@ def addAsignation(inventario,tipo_mov,encargado):
                 cf.rs.showError('El ID no corresponde a ningun activo registrado')
         isActivo=cf.rs.yesORnot('Desea agregar otro activo a la asignación')
         if activos==[]: ## si se quieren salir de la asignación 
-            isworking=(cf.rs.yesORnot('Desea salir de asignaciones'))
-            if isworking==True:
+            isworking=(cf.rs.yesORnot('No ha asignado ningun activo. Desea continuar en asignaciones'))
+            if isworking==False:
                 cf.clear_screen()
                 return
         

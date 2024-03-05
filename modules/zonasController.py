@@ -14,8 +14,14 @@ def addZona(inventario):
                 if value['nroZona'] == nroZona:
                     rs.showError("Esa zona ya se encuentra registrada")
                     cf.clear_screen()
-                    addZona(inventario)
-                    return
+                    ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                    if ispersona==True:
+                        cf.clear_screen()
+                        cf.zonas_menu()
+                        return
+                    else:
+                        addZona(inventario)
+
         if len(personalData):
             for value in personalData.values():
                 if (value["id"] == nroZona):

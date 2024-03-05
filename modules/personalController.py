@@ -12,8 +12,14 @@ def addPersonal(inventario):
             for value in personalData.values():
                 if (value["id"] == id):
                     rs.showError("Ese id o nit ya se encuentra registrado")
-                    addPersonal(inventario)
-                    return
+                    ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
+                    if ispersona==True:
+                        cf.clear_screen()
+                        cf.personal_menu()
+                        return
+                    else:
+                        addPersonal(inventario)
+                    
         
         if len(zonasData):
             for valor in zonasData.values():

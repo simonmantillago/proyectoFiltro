@@ -2,14 +2,14 @@ import sys
 import os
 import json
 import modules.reusable as rs
-from ui.menu import reports_menu
+from ui.menu import reports_menu,personal_menu,zonas_menu,reports_menu
 BASE="data/"
 
 def clear_screen():
-  if sys.platform == "linux" or sys.platform == "darwin":
-    os.system("clear")
-  else:
-    os.system("cls")
+    if sys.platform == "linux" or sys.platform == "darwin":
+        os.system("clear")
+    else:
+        os.system("cls")
 
 def pause_screen():
     if sys.platform == "linux" or sys.platform == "darwin":
