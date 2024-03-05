@@ -1,5 +1,6 @@
 import modules.coreFiles as cf 
 from tabulate import tabulate
+#modulo dedicado al crud de activos
 
 def addActivo(inventario):
     codigo_transaccion = cf.rs.checkInput('str','Ingrese el codigo de la transaccion')
@@ -7,7 +8,7 @@ def addActivo(inventario):
     
     
     activosData = inventario.get('activos')
-    if activosData:
+    if activosData: # verificacion de que no se repitan
         for value in activosData.values():
             if (value["codigo_transaccion"] == codigo_transaccion or
                 value["numero_formulario"] == numero_formulario):
@@ -91,7 +92,7 @@ def modifyActivo(data, srcData):
         cf.rs.showError('No se encontro informacion sobre ese activo')
         cf.clear_screen()
     else:
-        for key in data.keys():
+        for key in data.keys(): #recorrer el diccionario y no permitir que se modifiquen algunos datos
             if(key != 'codigo'):
                 if(key != 'Asignado_A'): ##AQUI LE PUSE EL CONDICIONAL PARA QUE ESTO NO SE PUEDA MODIFICAR, POR QUE SI NO VALEMOS MONDA
                     if(key != 'estado'): ##AQUI LE PUSE EL CONDICIONAL PARA QUE ESTO NO SE PUEDA MODIFICAR, POR QUE SI NO VALEMOS MONDA

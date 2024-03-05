@@ -73,6 +73,7 @@ def searchZona(data):
     else: 
         rs.showError('No hay zonas registradas')
         cf.clear_screen()
+        
 def modifyZona(data, srcData):
     if len(data) <= 0:
         rs.showError('No se encontro informacion sobre ese activo')

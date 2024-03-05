@@ -2,7 +2,7 @@ import modules.coreFiles as cf
 from datetime import datetime
 from tabulate import tabulate
 
-
+#funcion main de asignaciones
 
 def addAsignation(inventario,tipo_mov,encargado):
     #constantes
@@ -13,7 +13,7 @@ def addAsignation(inventario,tipo_mov,encargado):
 
     isTipo=True
     while isTipo:
-        cf.clear_screen()
+        cf.clear_screen() #a quien se le asigna el activo
         op=cf.rs.checkInput('int','A quien va a realizar la asignacion:\n1. Persona\n2. Zona\n->') 
         cf.clear_screen()
         if op==1:
@@ -24,7 +24,7 @@ def addAsignation(inventario,tipo_mov,encargado):
                 id=id_persona
                 isTipo=False
             else:
-                cf.rs.showError('El ID no corresponde a ninguna persona registrada')
+                cf.rs.showError('El ID no corresponde a ninguna persona registrada') 
                 ispersona=not(cf.rs.yesORnot('Desea intentarlo nuevamente'))
                 if ispersona==True:
                     cf.clear_screen()
@@ -110,9 +110,7 @@ def add_codigo(activos,inventario,codigo,tipo,fecha,id,encargado,tipo_mov):
     inventario['activos'][codigo]['historial'].update({nro_historial:historial})
 
 
-#######################################################################################################################################
-#######################################################################################################################################
-# SEARCH
+
     
 def search_Asignation(inventario):
     nro_asignation=cf.rs.checkInput('str','Ingrese el numero de la asignacion a buscar').upper()
